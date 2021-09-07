@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * @module M/control/InputselectaddlayerControl
  */
@@ -15,7 +16,7 @@ export default class InputselectaddlayerControl extends M.Control {
    * @extends {M.Control}
    * @api stable
    */
-  constructor() {
+  constructor(config) {
     // 1. checks if the implementation can create PluginControl
     if (M.utils.isUndefined(InputselectaddlayerImplControl)) {
       M.exception('La implementación usada no puede crear controles InputselectaddlayerControl');
@@ -24,10 +25,18 @@ export default class InputselectaddlayerControl extends M.Control {
     const impl = new InputselectaddlayerImplControl();
     super(impl, 'Inputselectaddlayer');
 
-    // captura de customevent lanzado desde impl con coords
-    window.addEventListener('mapclicked', (e) => {
-      this.map_.addLabel('Hola Mundo!', e.detail);
-    });
+    this.config = config;
+    this.isGroup = config.group
+    this.layerGroups = config.layerGroups
+
+    this.groups = this.getGroups(this.layerGroups);
+    //console.log(this.getGroups(this.layerGroups));
+    //console.log(this.layers);
+    //console.log(this.isGroup);
+    //console.log(this.config);
+    //console.log(this.groups);
+    
+
   }
 
   /**
@@ -39,28 +48,10 @@ export default class InputselectaddlayerControl extends M.Control {
    * @api stable
    */
   createView(map) {
-    if (!M.template.compileSync) { // JGL: retrocompatibilidad Mapea4
-      M.template.compileSync = (string, options) => {
-        let templateCompiled;
-        let templateVars = {};
-        let parseToHtml;
-        if (!M.utils.isUndefined(options)) {
-          templateVars = M.utils.extends(templateVars, options.vars);
-          parseToHtml = options.parseToHtml;
-        }
-        const templateFn = Handlebars.compile(string);
-        const htmlText = templateFn(templateVars);
-        if (parseToHtml !== false) {
-          templateCompiled = M.utils.stringToHtml(htmlText);
-        } else {
-          templateCompiled = htmlText;
-        }
-        return templateCompiled;
-      };
-    }
-    
+    let templateVars = { vars: { config: this.config ,isGroup: this.isGroup, groups: this.groups}};
     return new Promise((success, fail) => {
-      const html = M.template.compileSync(template);
+      //const html = M.template.compileSync(template, templateVars);
+      const html = M.template.compileSync(template,templateVars);
       // Añadir código dependiente del DOM
       success(html);
     });
@@ -91,4 +82,15 @@ export default class InputselectaddlayerControl extends M.Control {
   }
 
   // Add your own functions
+
+  getGroups(layerGroups){
+    let groups = new Array();
+    for (let x = 0; x < layerGroups.length; x++) {
+      let layers = layerGroups[x];      
+      groups.push(layers.group);
+
+    }
+    console.log(groups);
+    return groups;
+  }
 }
