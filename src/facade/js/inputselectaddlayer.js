@@ -56,7 +56,7 @@ export default class Inputselectaddlayer extends M.Plugin {
       collapsible: true,
       position: M.ui.position.TR,
       collapsedButtonClass: 'g-cartografia-flecha-izquierda',
-      tooltip: 'añadir capa'
+      tooltip: 'Aañadir capa'
     });
     this.panel_.addControls(this.controls_);
     map.addPanels(this.panel_);
