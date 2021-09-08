@@ -4,7 +4,8 @@
  */
 
 import InputselectaddlayerImplControl from 'impl/inputselectaddlayercontrol';
-import template from 'templates/inputselectaddlayer';
+import templateSelectOptionGroups from 'templates/inputselectaddlayerOptionGroups';
+import templateSelect from 'templates/inputselectaddlayer';
 
 export default class InputselectaddlayerControl extends M.Control {
   /**
@@ -24,19 +25,17 @@ export default class InputselectaddlayerControl extends M.Control {
     // 2. implementation of this control
     const impl = new InputselectaddlayerImplControl();
     super(impl, 'Inputselectaddlayer');
-
+    this.layer = null;
     this.config = config;
+    this.title = config.title;
     this.isGroup = config.group
-    this.layerGroups = config.layerGroups
-
-    this.groups = this.getGroups(this.layerGroups);
-    //console.log(this.getGroups(this.layerGroups));
-    //console.log(this.layers);
-    //console.log(this.isGroup);
-    //console.log(this.config);
-    //console.log(this.groups);
-    
-
+    if (this.isGroup) {
+      this.layerGroups = config.layerGroups
+      this.groups = this.getGroups(this.layerGroups);
+      this.layersList = this.getLayers(this.layerGroups);
+    } else {
+      this.layersList = this.config.layers
+    }
   }
 
   /**
@@ -48,12 +47,38 @@ export default class InputselectaddlayerControl extends M.Control {
    * @api stable
    */
   createView(map) {
-    let templateVars = { vars: { config: this.config ,isGroup: this.isGroup, groups: this.groups}};
+    let templateVars
+    if (this.isGroup) {
+      templateVars = { vars: { title: this.title, groups: this.groups } };
+    } else {
+      templateVars = { vars: { title: this.title, layersList: this.layersList } };
+    }
     return new Promise((success, fail) => {
+      let html
       //const html = M.template.compileSync(template, templateVars);
-      const html = M.template.compileSync(template,templateVars);
+      if (this.isGroup) {
+        html = M.template.compileSync(templateSelectOptionGroups, templateVars);
+      } else {
+        html = M.template.compileSync(templateSelect, templateVars);
+      }
+
       // Añadir código dependiente del DOM
+      this.element = html;
+      this.addEvents(html);
       success(html);
+    });
+  }
+
+  addEvents(html) {
+    // QuerySelector
+    this.layerSelector = html.querySelector('select#layerSelector');
+    //EventListeners
+    this.layerSelector.addEventListener('change', () => {
+      let value = this.layerSelector[this.layerSelector.selectedIndex].value;
+      this.LoadLayer(value);
+      if (this.layerSelector[0].value == '') {
+        this.layerSelector.remove(0);
+      }
     });
   }
 
@@ -83,14 +108,61 @@ export default class InputselectaddlayerControl extends M.Control {
 
   // Add your own functions
 
-  getGroups(layerGroups){
+  getGroups(layerGroups) {
+    let layer;
     let groups = new Array();
     for (let x = 0; x < layerGroups.length; x++) {
-      let layers = layerGroups[x];      
-      groups.push(layers.group);
-
+      let layers = layerGroups[x];
+      layer = {
+        group: layers.group,
+        layers: layers.layers
+      }
+      groups.push(layer);
     }
-    console.log(groups);
     return groups;
   }
+
+  getLayers(layerGroups) {
+    let layerList = new Array();
+    for (let x = 0; x < layerGroups.length; x++) {
+      let layers = layerGroups[x].layers;
+      for (let index = 0; index < layers.length; index++) {
+        const element = layers[index];
+        layerList.push(element);
+      }
+    }
+    return layerList;
+  }
+
+  LoadLayer(value) {
+    this.map_.removeLayers(this.layer);
+    let selectedLayer = null;
+    let find = false;
+    do {
+      for (let i = 0; i < this.layersList.length; i++) {
+        if (this.layersList[i].id == value) {
+          this.layer = new M.layer.WMS({
+            url: this.layersList[i].url,
+            name: this.layersList[i].name,
+            legend: this.layersList[i].title,
+            transparent: true
+          }, {
+            params: {
+              styles: this.layersList[i].style,
+              layers: this.layersList[i].name
+            }
+          });
+
+          selectedLayer = this.layersList[i]
+          find = true;
+        }
+      }
+    } while (!find);
+
+    this.layer.setLegendURL(selectedLayer.url + 'service=WMS&version=1.1.1&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + selectedLayer.name + '&style=' + selectedLayer.style);
+    this.layer.setOpacity(0.7);
+    this.map_.addLayers([this.layer]);
+    this.layer.displayInLayerSwitcher = true;
+  }
+
 }
