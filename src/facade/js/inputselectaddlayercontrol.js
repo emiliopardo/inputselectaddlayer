@@ -5,7 +5,10 @@
 
 import InputselectaddlayerImplControl from 'impl/inputselectaddlayercontrol';
 import templateSelectOptionGroups from 'templates/inputselectaddlayerOptionGroups';
+import templateSelectAnidated from 'templates/inputselectaddlayerAnidatedSelect'
 import templateSelect from 'templates/inputselectaddlayer';
+import templateSelectAnidatedAndOptionGroups from 'templates/inputselectaddlayerAnidatedSelectAndOptionGroup';
+
 
 export default class InputselectaddlayerControl extends M.Control {
   /**
@@ -29,12 +32,14 @@ export default class InputselectaddlayerControl extends M.Control {
     this.config = config;
     this.title = config.title;
     this.isGroup = config.group
+    this.groupTypes = new Array();
     if (this.isGroup) {
-      this.layerGroups = config.layerGroups
-      this.groups = this.getGroups(this.layerGroups);
-      this.layersList = this.getLayers(this.layerGroups);
+      this.groupTypes = config.groupTypes;
+      this.getGroupTypes(this.groupTypes);
     } else {
       this.layersList = this.config.layers
+      this.templateVars = { vars: { title: this.title, layersList: this.layersList } };
+      this.template = templateSelect;
     }
   }
 
@@ -47,21 +52,10 @@ export default class InputselectaddlayerControl extends M.Control {
    * @api stable
    */
   createView(map) {
-    let templateVars
-    if (this.isGroup) {
-      templateVars = { vars: { title: this.title, groups: this.groups } };
-    } else {
-      templateVars = { vars: { title: this.title, layersList: this.layersList } };
-    }
-    return new Promise((success, fail) => {
-      let html
-      //const html = M.template.compileSync(template, templateVars);
-      if (this.isGroup) {
-        html = M.template.compileSync(templateSelectOptionGroups, templateVars);
-      } else {
-        html = M.template.compileSync(templateSelect, templateVars);
-      }
 
+    return new Promise((success, fail) => {
+      //let html
+      const html = M.template.compileSync(this.template, this.templateVars);
       // Añadir código dependiente del DOM
       this.element = html;
       this.addEvents(html);
@@ -72,6 +66,33 @@ export default class InputselectaddlayerControl extends M.Control {
   addEvents(html) {
     // QuerySelector
     this.layerSelector = html.querySelector('select#layerSelector');
+    if (this.groupTypes.includes('group')) {  
+      this.groupSelector = html.querySelector('select#groupSelector');
+      this.layerSelector.disabled = true;
+      this.groupSelector.addEventListener('change', () => {
+        let value = this.groupSelector[this.groupSelector.selectedIndex].value;
+        let layers = this.getOptionsSelect(value);
+        if (this.groupSelector[0].value == '') {
+          this.groupSelector.remove(0);
+        }
+        this.fillLayerSelector(layers);
+        this.layerSelector.disabled = false;
+      });
+    }
+    if (this.groupTypes.includes('optiongroup') & this.groupTypes.includes('group') ){
+      this.groupSelector = html.querySelector('select#groupSelector');
+      this.layerSelector.disabled = true;
+      this.groupSelector.addEventListener('change', () => {
+        let value = this.groupSelector[this.groupSelector.selectedIndex].value;
+        let layers = this.getOptionsSelect(value);
+        if (this.groupSelector[0].value == '') {
+          this.groupSelector.remove(0);
+        }
+        this.fillLayerSelector(layers);
+        this.layerSelector.disabled = false;
+      });
+    }
+
     //EventListeners
     this.layerSelector.addEventListener('change', () => {
       let value = this.layerSelector[this.layerSelector.selectedIndex].value;
@@ -106,20 +127,85 @@ export default class InputselectaddlayerControl extends M.Control {
     return control instanceof InputselectaddlayerControl;
   }
 
-  // Add your own functions
+  // Add your own functions  
+
+  getGroupTypes(values) {
+    this.layerGroups = this.config.layerGroups
+
+
+    if (values.includes('group') & values.includes('optiongroup')) {
+      console.log('es de tipo anidado y con optionGroup')
+      this.groups = this.getGroups(this.layerGroups);
+      this.layerGroups = this.config.layerGroups;
+      this.layersList = this.getLayers(this.layerGroups);
+      this.template = templateSelectAnidatedAndOptionGroups;
+      this.templateVars = { vars: { title: this.title, select1: this.groups } };
+    } else if (values.includes('group')) {
+      console.log('es de tipo solo anidado')
+      this.groups = this.getGroups(this.layerGroups);
+      this.layersList = this.getLayers(this.layerGroups);
+      this.template = templateSelectAnidated;
+      this.templateVars = { vars: { title: this.title, select1: this.groups } };
+    } else if (values.includes('optiongroup')) {
+      console.log('es de tipo solo optionGroup')
+      this.groups = this.getOptionGroups(this.layerGroups);
+      this.layersList = this.getLayers(this.layerGroups);
+      this.templateVars = { vars: { title: this.title, groups: this.groups } };
+      this.template = templateSelectOptionGroups
+    }
+  }
 
   getGroups(layerGroups) {
+    let groups = new Array();
+    for (let x = 0; x < layerGroups.length; x++) {
+      groups.push(layerGroups[x].group);
+    }
+    return groups;
+  }
+
+  getOptionGroups(layerGroups) {
     let layer;
     let groups = new Array();
     for (let x = 0; x < layerGroups.length; x++) {
       let layers = layerGroups[x];
       layer = {
-        group: layers.group,
+        group: layers.optiongroup,
         layers: layers.layers
       }
       groups.push(layer);
     }
     return groups;
+  }
+
+  getOptionsSelect(value) {
+    let layerGroups = this.config.layerGroups
+    let layerList = new Array();
+    let find = false;
+    do {
+      for (let i = 0; i < layerGroups.length; i++) {
+        if (this.layerGroups[i].group == value) {
+          layerList = this.layerGroups[i].layers;
+          find = true;
+        }
+      }
+    } while (!find);
+    return layerList
+  }
+
+  fillLayerSelector(values) {
+    this.layersList = values;
+    this.layerSelector.innerHTML = '';
+    let element = document.createElement('option');
+    element.value = '';
+    element.textContent = ' --- Selecciona una capa --- ';
+    this.layerSelector.appendChild(element);
+    for (let index = 0; index < values.length; index++) {
+      let layer = values[index];
+      element = document.createElement('option');
+      element.value = layer.id;
+      element.textContent = layer.title
+      this.layerSelector.appendChild(element);
+    }
   }
 
   getLayers(layerGroups) {
@@ -160,7 +246,7 @@ export default class InputselectaddlayerControl extends M.Control {
     } while (!find);
 
     this.layer.setLegendURL(selectedLayer.url + 'service=WMS&version=1.1.1&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + selectedLayer.name + '&style=' + selectedLayer.style);
-    this.layer.setOpacity(0.7);
+    this.layer.setOpacity(0.9);
     this.map_.addLayers([this.layer]);
     this.layer.displayInLayerSwitcher = true;
   }
