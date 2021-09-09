@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * @module M/plugin/Inputselectaddlayer
  */
@@ -50,21 +51,23 @@ export default class Inputselectaddlayer extends M.Plugin {
    * @api stable
    */
   addTo(map) {
+    //let this_ = this;
     this.controls_.push(new InputselectaddlayerControl(this.config));
     this.map_ = map;
     // panel para agregar control - no obligatorio
     this.panel_ = new M.ui.Panel('panelInputselectaddlayer', {
       className: 'm-selector-panel',
-      collapsible: true,
+      //collapsible: true,
       position: M.ui.position.TR,
-      //collapsedButtonClass: 'g-cartografia-flecha-izquierda',
       collapsedButtonClass: 'g-cartografia-capas2',
       tooltip: 'Aañadir capa'
     });
     this.panel_.addControls(this.controls_);
+    // this.panel_.on(M.evt.ADDED_TO_MAP, function (html) {
+    //   this_.panel_.open();
+    // });
     map.addPanels(this.panel_);
   }
-
   /**
    * This function gets metadata plugin
    *
@@ -72,7 +75,7 @@ export default class Inputselectaddlayer extends M.Plugin {
    * @function
    * @api stable
    */
-  getMetadata(){
+  getMetadata() {
     return this.metadata_;
   }
 }
