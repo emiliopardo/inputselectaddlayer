@@ -4,13 +4,16 @@
       {{title}}
     </div> -->
     <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
-      <select id='layerSelector' class="m-inputselectaddlayer-select" name="select">
-        <option value=""> --- Selecciona una capa --- </option>
-        {{#each layersList}}
-        <option value="{{this.id}}">{{this.title}}</option>
+      <select id='groupSelector' class="m-inputselectaddlayer-select select-group" name="select">
+        <option value=""> --- Selecciona un Grupo --- </option>
+        {{#each select1}}
+        <option value="{{this}}">{{this}}</option>
         {{/each}}
-        </optgroup>
       </select>
+
+      <select id='layerSelector' class="m-inputselectaddlayer-select select-layer" name="select">
+        <option value=""> --- Selecciona una capa --- </option>
+      </select>      
     </div>
   </div>
 </div>
