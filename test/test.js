@@ -339,143 +339,194 @@ const configCaracterizacionEspacioConstruido = {
   ]
 }
 
-const configOrtofotografias = {
-  title: 'Ortofotografías Digitales de Andalucía',
+
+
+
+
+/* Select Anidado con Option Group**/
+const configOrtofotografias1 = {
+  label: 'Año',
   group: true,
-  groupTypes: ['optiongroup'],
-  layerGroups: [
+  data: [
     {
-      optiongroup: 'Año 2016',
-      layers: [
+      name: '2016',
+      layerGroups: [
         {
-          id: 9,
-          name: 'ortofotografia_2016_pancromatico',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 10,
-          name: 'ortofotografia_2016_rgb',
-          title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 11,
-          name: 'ortofotografia_2016_infrarrojo',
-          title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          group: 'Año 2016',
+          layers: [
+            {
+              id: 9,
+              name: 'ortofotografia_2016_pancromatico',
+              title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            },
+            {
+              id: 10,
+              name: 'ortofotografia_2016_rgb',
+              title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            },
+            {
+              id: 11,
+              name: 'ortofotografia_2016_infrarrojo',
+              title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            }
+          ]
         }
       ]
     },
     {
-      optiongroup: 'Año 2013',
-      layers: [
+      name: '2013',
+      layerGroups: [
         {
-          id: 8,
-          name: 'OCA05_2013',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+          group: 'Año 2013',
+          layers: [
+            {
+              id: 8,
+              name: 'OCA05_2013',
+              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+            }
+          ]
         }
       ]
     },
     {
-      optiongroup: 'Año 2011',
-      layers: [
+      name: '2011',
+      layerGroups: [{
+        group: 'Año 2011',
+        layers: [
+          {
+            id: 7,
+            name: 'OCA10_2010',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+          }
+        ]
+      }
+      ]
+
+    },
+    {
+      name: '2009',
+      layerGroups: [
         {
-          id: 7,
-          name: 'OCA10_2010',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+          group: 'Año 2009',
+          layers: [
+            {
+              id: 6,
+              name: 'OCA10_2009',
+              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+            }
+          ]
         }
       ]
     },
     {
-      optiongroup: 'Año 2009',
-      layers: [
+      name: '2007',
+      layerGroups: [
         {
-          id: 6,
-          name: 'OCA10_2009',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+          group: 'Año 2007',
+          layers: [
+            {
+              id: 5,
+              name: 'ORTO_2007',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+            }
+          ]
+        }
+      ]
+
+    },
+    {
+      name: '2004',
+      layerGroups: [
+        {
+          group: 'Año 2004',
+          layers: [
+            {
+              id: 4,
+              name: 'ORTO_2004',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+            }
+          ]
+        }
+
+      ]
+    },
+    {
+      name: '2001',
+      layerGroups: [
+        {
+          group: 'Año 2001',
+          layers: [
+            {
+              id: 3,
+              name: 'ORTO_2001',
+              title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+            }
+          ]
         }
       ]
     },
     {
-      optiongroup: 'Año 2007',
-      layers: [
+      name: '1998',
+      layerGroups: [
         {
-          id: 5,
-          name: 'ORTO_2007',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+          group: 'Año 1998',
+          layers: [
+            {
+              id: 2,
+              name: 'ortofoto1998',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+            }
+          ]
         }
       ]
     },
     {
-      optiongroup: 'Año 2004',
-      layers: [
+      name: '1956',
+      layerGroups: [
         {
-          id: 4,
-          name: 'ORTO_2004',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+          group: 'Año 1956',
+          layers: [
+            {
+              id: 1,
+              name: 'REDIAM',
+              title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+              style: 'default',
+              url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+            }
+          ]
         }
       ]
-    },
-    {
-      optiongroup: 'Año 2001',
-      layers: [
-        {
-          id: 3,
-          name: 'ORTO_2001',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-        }
-      ]
-    },
-    {
-      optiongroup: 'Año 1998',
-      layers: [
-        {
-          id: 2,
-          name: 'ortofoto1998',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-        }
-      ]
-    },
-    {
-      optiongroup: 'Año 1956',
-      layers: [
-        {
-          id: 1,
-          name: 'REDIAM',
-          title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-          style: 'default',
-          url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-        }
-      ]
-    },
+    }
   ]
 }
 
+/* Select Anidado y sin Option Group**/
 const configOrtofotografias2 = {
-  title: 'Ortofotografías Digitales de Andalucía',
-  group: true,
-  groupTypes: ['group'],
-  layerGroups: [
+  label: 'Año',
+  group: false,
+  data: [
     {
-      group: 'Año 2016',
+      name: 'Año 2016',
       layers: [
         {
           id: 9,
@@ -501,7 +552,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2013',
+      name: 'Año 2013',
       layers: [
         {
           id: 8,
@@ -513,7 +564,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2011',
+      name: 'Año 2011',
       layers: [
         {
           id: 7,
@@ -525,7 +576,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2009',
+      name: 'Año 2009',
       layers: [
         {
           id: 6,
@@ -537,7 +588,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2007',
+      name: 'Año 2007',
       layers: [
         {
           id: 5,
@@ -549,7 +600,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2004',
+      name: 'Año 2004',
       layers: [
         {
           id: 4,
@@ -561,7 +612,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 2001',
+      name: 'Año 2001',
       layers: [
         {
           id: 3,
@@ -573,8 +624,8 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 1998',
-      layers: [
+      name: 'Año 1998',
+      layer: [
         {
           id: 2,
           name: 'ortofoto1998',
@@ -585,7 +636,7 @@ const configOrtofotografias2 = {
       ]
     },
     {
-      group: 'Año 1956',
+      name: 'Año 1956',
       layers: [
         {
           id: 1,
@@ -595,155 +646,244 @@ const configOrtofotografias2 = {
           url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
         }
       ]
-    },
+    }
   ]
 }
 
+/* Select no Anidado con Option Group**/
 const configOrtofotografias3 = {
-  title: 'Ortofotografías Digitales de Andalucía',
+  label: 'Año',
   group: true,
-  groupTypes: ['group','optiongroup'],
-  layerGroups: [
-    {
-      group: 'Año 2016',
-      optionGroup: 'Año 2016',
-      layers: [
-        {
-          id: 9,
-          name: 'ortofotografia_2016_pancromatico',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 10,
-          name: 'ortofotografia_2016_rgb',
-          title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 11,
-          name: 'ortofotografia_2016_infrarrojo',
-          title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2013',
-      optionGroup: 'Año 2013',
-      layers: [
-        {
-          id: 8,
-          name: 'OCA05_2013',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2011',
-      optionGroup: 'Año 2011',
-      layers: [
-        {
-          id: 7,
-          name: 'OCA10_2010',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2009',
-      optionGroup: 'Año 2009',
-      layers: [
-        {
-          id: 6,
-          name: 'OCA10_2009',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2007',
-      optionGroup: 'Año 2007',
-      layers: [
-        {
-          id: 5,
-          name: 'ORTO_2007',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2004',
-      optionGroup: 'Año 2004',
-      layers: [
-        {
-          id: 4,
-          name: 'ORTO_2004',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
-        }
-      ]
-    },
-    {
-      group: 'Año 2001',
-      optionGroup: 'Año 2001',
-      layers: [
-        {
-          id: 3,
-          name: 'ORTO_2001',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-        }
-      ]
-    },
-    {
-      group: 'Año 1998',
-      optionGroup: 'Año 1998',
-      layers: [
-        {
-          id: 2,
-          name: 'ortofoto1998',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-        }
-      ]
-    },
-    {
-      group: 'Año 1956',
-      optionGroup: 'Año 1956',
-      layers: [
-        {
-          id: 1,
-          name: 'REDIAM',
-          title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-          style: 'default',
-          url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-        }
-      ]
-    },
-  ]
+  data:
+  {
+    name: '2016',
+    layerGroups: [
+      {
+        group: 'Año 2016',
+        layers: [
+          {
+            id: 9,
+            name: 'ortofotografia_2016_pancromatico',
+            title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          },
+          {
+            id: 10,
+            name: 'ortofotografia_2016_rgb',
+            title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          },
+          {
+            id: 11,
+            name: 'ortofotografia_2016_infrarrojo',
+            title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2013',
+        layers: [
+          {
+            id: 8,
+            name: 'OCA05_2013',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2011',
+        layers: [
+          {
+            id: 7,
+            name: 'OCA10_2010',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2009',
+        layers: [
+          {
+            id: 6,
+            name: 'OCA10_2009',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+          }
+        ]
+      }
+      , {
+        group: 'Año 2007',
+        layers: [
+          {
+            id: 5,
+            name: 'ORTO_2007',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+          }
+        ]
+      }
+      , {
+        group: 'Año 2004',
+        layers: [
+          {
+            id: 4,
+            name: 'ORTO_2004',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+          }
+        ]
+      }, {
+        group: 'Año 2001',
+        layers: [
+          {
+            id: 3,
+            name: 'ORTO_2001',
+            title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+          }
+        ]
+      },
+      {
+        group: 'Año 1998',
+        layers: [
+          {
+            id: 2,
+            name: 'ortofoto1998',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+          }
+        ]
+      },
+      {
+        group: 'Año 1956',
+        layers: [
+          {
+            id: 1,
+            name: 'REDIAM',
+            title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+            style: 'default',
+            url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+          }
+        ]
+      }
+    ]
+  }
 }
 
-//const mp = new Inputselectaddlayer(configOrtofotografias);
+/* Select no Anidado sin Option Group**/
+const configOrtofotografias4 = {
+  label: 'Año',
+  group: false,
+  data:
+  {
+    name: '2016',
+    layers: [
+      {
+        id: 11,
+        name: 'ortofotografia_2016_infrarrojo',
+        title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+      },
+      {
+        id: 10,
+        name: 'ortofotografia_2016_rgb',
+        title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+      },
+      {
+        id: 9,
+        name: 'ortofotografia_2016_pancromatico',
+        title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+      },
+      {
+        id: 8,
+        name: 'OCA05_2013',
+        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+      },
+      {
+        id: 7,
+        name: 'OCA10_2010',
+        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+      }, {
+        id: 6,
+        name: 'OCA10_2009',
+        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+      },
+      {
+        id: 5,
+        name: 'ORTO_2007',
+        title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+      },
+      {
+        id: 4,
+        name: 'ORTO_2004',
+        title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+      }, {
+        id: 3,
+        name: 'ORTO_2001',
+        title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+      },
+      {
+        id: 2,
+        name: 'ortofoto1998',
+        title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+        style: 'default',
+        url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+      }, {
+        id: 1,
+        name: 'REDIAM',
+        title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+        style: 'default',
+        url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+      }
+    ]
+  }
+}
+
+
+
+
+
+/* Select Anidado con Option Group**/
+const mp = new Inputselectaddlayer(configOrtofotografias1);
+/* Select Anidado y sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias2);
-const mp = new Inputselectaddlayer(configOrtofotografias3);
+/* Select no Anidado con Option Group**/
+//const mp = new Inputselectaddlayer(configOrtofotografias3);
+/* Select no Anidado sin Option Group**/
+//const mp = new Inputselectaddlayer(configOrtofotografias4);
+
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
 //const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
 //const mp = new Inputselectaddlayer(configCaracterizacionEspacioConstruido);
-
 
 map.addPlugin(mp);
