@@ -6,7 +6,7 @@
     <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
       <select id='layerSelector' class="m-inputselectaddlayer-select" name="select">
         <option value=""> --- Selecciona una capa --- </option>
-        {{#each layersList}}
+        {{#each layers}}
         <option value="{{this.id}}">{{this.title}}</option>
         {{/each}}
         </optgroup>
