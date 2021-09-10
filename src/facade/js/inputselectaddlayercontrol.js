@@ -7,8 +7,6 @@ import InputselectaddlayerImplControl from 'impl/inputselectaddlayercontrol';
 import templateSelectOptionGroups from 'templates/inputselectaddlayerOptionGroups';
 import templateSelectAnidated from 'templates/inputselectaddlayerAnidatedSelect'
 import templateSelect from 'templates/inputselectaddlayer';
-import templateSelectAnidatedAndOptionGroups from 'templates/inputselectaddlayerAnidatedSelectAndOptionGroup';
-
 
 export default class InputselectaddlayerControl extends M.Control {
   /**
@@ -30,17 +28,8 @@ export default class InputselectaddlayerControl extends M.Control {
     super(impl, 'Inputselectaddlayer');
     this.layer = null;
     this.config = config;
+    this.checkConfig(this.config);
     this.title = config.title;
-    this.isGroup = config.group
-    this.groupTypes = new Array();
-    if (this.isGroup) {
-      this.groupTypes = config.groupTypes;
-      this.getGroupTypes(this.groupTypes);
-    } else {
-      this.layersList = this.config.layers
-      this.templateVars = { vars: { title: this.title, layersList: this.layersList } };
-      this.template = templateSelect;
-    }
   }
 
   /**
@@ -66,33 +55,24 @@ export default class InputselectaddlayerControl extends M.Control {
   addEvents(html) {
     // QuerySelector
     this.layerSelector = html.querySelector('select#layerSelector');
-    if (this.groupTypes.includes('group')) {  
+    if (Array.isArray(this.data)) {
       this.groupSelector = html.querySelector('select#groupSelector');
       this.layerSelector.disabled = true;
       this.groupSelector.addEventListener('change', () => {
         let value = this.groupSelector[this.groupSelector.selectedIndex].value;
-        let layers = this.getOptionsSelect(value);
+        this.layerList = this.getGroupLayersByName(value);
         if (this.groupSelector[0].value == '') {
           this.groupSelector.remove(0);
         }
-        this.fillLayerSelector(layers);
-        this.layerSelector.disabled = false;
-      });
-    }
-    if (this.groupTypes.includes('optiongroup') & this.groupTypes.includes('group') ){
-      this.groupSelector = html.querySelector('select#groupSelector');
-      this.layerSelector.disabled = true;
-      this.groupSelector.addEventListener('change', () => {
-        let value = this.groupSelector[this.groupSelector.selectedIndex].value;
-        let layers = this.getOptionsSelect(value);
-        if (this.groupSelector[0].value == '') {
-          this.groupSelector.remove(0);
+        if (this.config.group) {
+          this.layerGroups = this.getLayersFromGroup(value);
+          this.fillLayerSelectorOptionGroups(this.layerGroups);
+        } else {
+          this.fillLayerSelector(this.layerList);
         }
-        this.fillLayerSelector(layers);
         this.layerSelector.disabled = false;
       });
     }
-
     //EventListeners
     this.layerSelector.addEventListener('change', () => {
       let value = this.layerSelector[this.layerSelector.selectedIndex].value;
@@ -127,73 +107,82 @@ export default class InputselectaddlayerControl extends M.Control {
     return control instanceof InputselectaddlayerControl;
   }
 
-  // Add your own functions  
-
-  getGroupTypes(values) {
-    this.layerGroups = this.config.layerGroups
-
-
-    if (values.includes('group') & values.includes('optiongroup')) {
-      console.log('es de tipo anidado y con optionGroup')
-      this.groups = this.getGroups(this.layerGroups);
-      this.layerGroups = this.config.layerGroups;
-      this.layersList = this.getLayers(this.layerGroups);
-      this.template = templateSelectAnidatedAndOptionGroups;
-      this.templateVars = { vars: { title: this.title, select1: this.groups } };
-    } else if (values.includes('group')) {
-      console.log('es de tipo solo anidado')
-      this.groups = this.getGroups(this.layerGroups);
-      this.layersList = this.getLayers(this.layerGroups);
-      this.template = templateSelectAnidated;
-      this.templateVars = { vars: { title: this.title, select1: this.groups } };
-    } else if (values.includes('optiongroup')) {
-      console.log('es de tipo solo optionGroup')
-      this.groups = this.getOptionGroups(this.layerGroups);
-      this.layersList = this.getLayers(this.layerGroups);
-      this.templateVars = { vars: { title: this.title, groups: this.groups } };
-      this.template = templateSelectOptionGroups
-    }
-  }
-
-  getGroups(layerGroups) {
-    let groups = new Array();
-    for (let x = 0; x < layerGroups.length; x++) {
-      groups.push(layerGroups[x].group);
-    }
-    return groups;
-  }
-
-  getOptionGroups(layerGroups) {
-    let layer;
-    let groups = new Array();
-    for (let x = 0; x < layerGroups.length; x++) {
-      let layers = layerGroups[x];
-      layer = {
-        group: layers.optiongroup,
-        layers: layers.layers
+  // Add your own functions 
+  checkConfig(config) {
+    this.layerList = new Array();
+    this.groupList = new Array();
+    this.data = config.data;
+    this.isGroup = config.group;
+    if (Array.isArray(this.data) & config.group == true) {
+      console.log('es anidado con optionGroup')
+      for (let index = 0; index < config.data.length; index++) {
+        this.groupList.push(config.data[index].name)
       }
-      groups.push(layer);
+      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.template = templateSelectAnidated;
+    } else if (Array.isArray(this.data) & config.group == false) {
+      console.log('es anidado sin optionGroup')
+      for (let index = 0; index < config.data.length; index++) {
+        this.groupList.push(config.data[index].name)
+      }
+      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.template = templateSelectAnidated;
+    } else if (config.group) {
+      console.log('no anidado con optionGroup')
+      this.getLayersFromGroupsLayers(this.data.layerGroups);
+      this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups } };
+      this.template = templateSelectOptionGroups;
+    } else {
+      console.log('no anidado sin optionGroup')
+      this.layerList = this.data.layers;
+      this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
+      this.template = templateSelect;
     }
-    return groups;
+
   }
 
-  getOptionsSelect(value) {
-    let layerGroups = this.config.layerGroups
-    let layerList = new Array();
+  getGroupLayersByName(value) {
     let find = false;
+    let layers = new Array();
     do {
-      for (let i = 0; i < layerGroups.length; i++) {
-        if (this.layerGroups[i].group == value) {
-          layerList = this.layerGroups[i].layers;
+      for (let i = 0; i < this.data.length; i++) {
+        if (this.data[i].name == value) {
+          layers = this.data[i].layers
           find = true;
         }
       }
     } while (!find);
-    return layerList
+    return layers
+  }
+
+  getLayersFromGroup(value) {
+    let find = false;
+    let layersGroups = new Array();
+    do {
+      for (let i = 0; i < this.data.length; i++) {
+        if (this.data[i].name == value) {
+          layersGroups = this.data[i].layerGroups
+          find = true;
+        }
+      }
+    } while (!find);
+    return layersGroups
+  }
+
+  getLayersFromGroupsLayers(layerGroups) {
+    let arrayLayers = null
+    let layer = null;
+    for (let x = 0; x < layerGroups.length; x++) {
+      arrayLayers = layerGroups[x].layers;
+      for (let y = 0; y < arrayLayers.length; y++) {
+        layer = arrayLayers[y];
+        this.layerList.push(layer);
+      }
+    }
   }
 
   fillLayerSelector(values) {
-    this.layersList = values;
+    this.layerList = values;
     this.layerSelector.innerHTML = '';
     let element = document.createElement('option');
     element.value = '';
@@ -208,38 +197,52 @@ export default class InputselectaddlayerControl extends M.Control {
     }
   }
 
-  getLayers(layerGroups) {
-    let layerList = new Array();
-    for (let x = 0; x < layerGroups.length; x++) {
-      let layers = layerGroups[x].layers;
-      for (let index = 0; index < layers.length; index++) {
-        const element = layers[index];
-        layerList.push(element);
+  fillLayerSelectorOptionGroups(values) {
+    this.layerSelector.innerHTML = '';
+    let element = document.createElement('option');
+    element.value = '';
+    element.textContent = ' --- Selecciona una capa --- ';
+    this.layerSelector.appendChild(element);
+    for (let index = 0; index < values.length; index++) {
+      let group = values[index].group;
+      let optgroup = document.createElement('optgroup');
+      optgroup.label = group;
+      for (let y = 0; y < values.length; y++) {
+        const layers = values[y].layers;
+        this.layerList = layers;
+        for (let z = 0; z < layers.length; z++) {
+          let layer = layers[z];
+          let option = document.createElement('option');
+          option.value = layer.id;
+          option.textContent = layer.title;
+          optgroup.appendChild(option);
+        }
       }
+      this.layerSelector.appendChild(optgroup);
     }
-    return layerList;
   }
+
 
   LoadLayer(value) {
     this.map_.removeLayers(this.layer);
     let selectedLayer = null;
     let find = false;
     do {
-      for (let i = 0; i < this.layersList.length; i++) {
-        if (this.layersList[i].id == value) {
+      for (let i = 0; i < this.layerList.length; i++) {
+        if (this.layerList[i].id == value) {
           this.layer = new M.layer.WMS({
-            url: this.layersList[i].url,
-            name: this.layersList[i].name,
-            legend: this.layersList[i].title,
+            url: this.layerList[i].url,
+            name: this.layerList[i].name,
+            legend: this.layerList[i].title,
             transparent: true
           }, {
             params: {
-              styles: this.layersList[i].style,
-              layers: this.layersList[i].name
+              styles: this.layerList[i].style,
+              layers: this.layerList[i].name
             }
           });
 
-          selectedLayer = this.layersList[i]
+          selectedLayer = this.layerList[i]
           find = true;
         }
       }
