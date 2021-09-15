@@ -71,7 +71,6 @@ export default class Inputselectaddlayer extends M.Plugin {
 
     this.control_.on(M.evt.ADDED_WMS, ()=> {
       this.fire(M.evt.ADDED_WMS);
-
     })
   }
   /**
