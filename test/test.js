@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import Inputselectaddlayer from 'facade/inputselectaddlayer';
 
 const map = M.map({
@@ -1347,3 +1349,17 @@ const mp = new Inputselectaddlayer(configGridPoblacion);
 
 
 map.addPlugin(mp);
+
+mp.on(M.evt.ADDED_TO_MAP, () => {
+  console.log('se cargo el control');
+})
+
+
+mp.on(M.evt.ADDED_WMS, () => {
+  console.log('se cargo una capa');
+  console.log(map.getLayers());
+
+  console.log(mp.getLayer())
+})
+
+
