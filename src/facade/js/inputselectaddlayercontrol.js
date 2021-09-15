@@ -265,5 +265,9 @@ export default class InputselectaddlayerControl extends M.Control {
     this.layer.setOpacity(0.9);
     this.map_.addLayers([this.layer]);
     this.layer.displayInLayerSwitcher = true;
+
+    this.layer.on(M.evt.LOAD, ()=>{
+      this.fire(M.evt.ADDED_WMS)
+    })
   }
 }
