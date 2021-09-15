@@ -30,6 +30,8 @@ export default class InputselectaddlayerControl extends M.Control {
     this.config = config;
     this.checkConfig(this.config);
     this.title = config.title;
+
+
   }
 
   /**
@@ -109,31 +111,34 @@ export default class InputselectaddlayerControl extends M.Control {
 
   // Add your own functions 
   checkConfig(config) {
+    if (config.hasOwnProperty('title')) {
+      this.title = config.title
+    }
     this.layerList = new Array();
     this.groupList = new Array();
     this.data = config.data;
     this.isGroup = config.group;
     if (Array.isArray(this.data) & config.group == true) {
-      console.log('es anidado con optionGroup')
+      // console.log('es anidado con optionGroup')
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
       this.templateVars = { vars: { title: this.title, groups: this.groupList } };
       this.template = templateSelectAnidated;
     } else if (Array.isArray(this.data) & config.group == false) {
-      console.log('es anidado sin optionGroup')
+      // console.log('es anidado sin optionGroup')
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
       this.templateVars = { vars: { title: this.title, groups: this.groupList } };
       this.template = templateSelectAnidated;
     } else if (config.group) {
-      console.log('no anidado con optionGroup')
+      // console.log('no anidado con optionGroup')
       this.getLayersFromGroupsLayers(this.data.layerGroups);
       this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups } };
       this.template = templateSelectOptionGroups;
     } else {
-      console.log('no anidado sin optionGroup')
+      // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
       this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
       this.template = templateSelect;
@@ -198,26 +203,34 @@ export default class InputselectaddlayerControl extends M.Control {
   }
 
   fillLayerSelectorOptionGroups(values) {
+    this.layerList = new Array();
+    let find = false;
     this.layerSelector.innerHTML = '';
     let element = document.createElement('option');
     element.value = '';
     element.textContent = ' --- Selecciona una capa --- ';
     this.layerSelector.appendChild(element);
-    for (let index = 0; index < values.length; index++) {
-      let group = values[index].group;
+    for (let x = 0; x < values.length; x++) {
+
+      let group = values[x].group;
       let optgroup = document.createElement('optgroup');
       optgroup.label = group;
-      for (let y = 0; y < values.length; y++) {
-        const layers = values[y].layers;
-        this.layerList = layers;
-        for (let z = 0; z < layers.length; z++) {
-          let layer = layers[z];
-          let option = document.createElement('option');
-          option.value = layer.id;
-          option.textContent = layer.title;
-          optgroup.appendChild(option);
+      do {
+        for (let y = 0; y < values.length; y++) {
+          if (values[y].group == group) {
+            let layers = values[x].layers
+            for (let index = 0; index < layers.length; index++) {
+              let layer = layers[index];
+              this.layerList.push(layer);
+              let option = document.createElement('option');
+              option.value = layer.id;
+              option.textContent = layer.title;
+              optgroup.appendChild(option);
+            }
+            find = true;
+          }
         }
-      }
+      } while (!find);
       this.layerSelector.appendChild(optgroup);
     }
   }
@@ -253,5 +266,4 @@ export default class InputselectaddlayerControl extends M.Control {
     this.map_.addLayers([this.layer]);
     this.layer.displayInLayerSwitcher = true;
   }
-
 }
