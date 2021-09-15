@@ -30,7 +30,7 @@ div.m-areas
 
 #inputselectaddlayer{
   position: absolute !important;
-  cursor: move !important;
+  /* cursor: move !important; */
 }
 
 #m-inputselectaddlayer-content{
