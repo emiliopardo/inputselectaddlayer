@@ -1,8 +1,11 @@
-<div id="div-contenedor" class="m-control m-container m-inputselectaddlayer">
+<div id="inputselectaddlayer" class="m-control m-container m-inputselectaddlayer" draggable="true">
   <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
-    <!-- <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
-      {{title}}
-    </div> -->
+    {{#if title}}
+    <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
+      <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
+        {{title}}
+      </div>
+      {{/if}}
     <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
       <select id='layerSelector' class="m-inputselectaddlayer-select" name="select">
         <option value=""> --- Selecciona una capa --- </option>
