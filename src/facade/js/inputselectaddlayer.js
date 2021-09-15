@@ -68,6 +68,11 @@ export default class Inputselectaddlayer extends M.Plugin {
     //   this_.panel_.open();
     // });
     map.addPanels(this.panel_);
+
+    this.control_.on(M.evt.ADDED_WMS, ()=> {
+      this.fire(M.evt.ADDED_WMS);
+
+    })
   }
   /**
    * This function gets metadata plugin
@@ -78,5 +83,9 @@ export default class Inputselectaddlayer extends M.Plugin {
    */
   getMetadata() {
     return this.metadata_;
+  }
+
+  getLayer(){
+    return this.control_.layer
   }
 }
