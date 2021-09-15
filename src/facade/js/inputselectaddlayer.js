@@ -52,7 +52,8 @@ export default class Inputselectaddlayer extends M.Plugin {
    */
   addTo(map) {
     //let this_ = this;
-    this.controls_.push(new InputselectaddlayerControl(this.config));
+    this.control_ = new InputselectaddlayerControl(this.config)
+    this.controls_.push(this.control_);
     this.map_ = map;
     // panel para agregar control - no obligatorio
     this.panel_ = new M.ui.Panel('panelInputselectaddlayer', {
