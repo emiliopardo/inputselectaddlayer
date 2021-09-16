@@ -18,6 +18,11 @@
 Para el correcto funcionamiento del plugin es necesario pasarle en su constructor un objeto **json** con los parámetros esperados.
 ### Parámetros del plugin
 
+La generación de select simple, ,select simple con grupos, select anidado o select anidado con grupos depende de los parámetros de configuración proporcionados.
+
+A continuación se proporcionan un ejemplo para cada una de las configuraciones tomando como base las Ortofotografías de Andalucía.
+- ### Ejemplo select simple ###
+
 ```javascript
 const configOrtofotografias4 = {
   title: 'Ortofotografías de Andalucia',
@@ -106,23 +111,478 @@ const configOrtofotografias4 = {
 }
 ```
 
+- ### Ejemplo select simple con grupos ###
 
-- **title [string]:** Título del panel. El título aparecerá tanto al dejar el ratón encima del boton del plugin a modo de Tooltip como en la parte superior del panel.
-- **geosearchUrl [string]:** url del core de geosearch al cual se desea consultar. La url deberá acabar con el símbolo **?**
-- **maxResults [integer]:**  Número máximo de registros que se desea recibir. Esto permite  el número de resultados devueltos facilitando la paginación y los tiempos de respuesta del geosearch
-- **fields: [array]** Campos sobre los que se desea buscar.(Array). Listado de campos que se desea que aparezcan en el Panel de buscador para realizar los filtros. Es necesario incluir los siguientes parámetros:
+```javascript
+const configOrtofotografias1 = {
+  title: 'Ortofotografías de Andalucia',
+  label: 'Año',
+  group: true,
+  data: [
+    {
+      name: 'Año 2016',
+      layerGroups: [
+        {
+          group: 'Año 2016',
+          layers: [
+            {
+              id: 9,
+              name: 'ortofotografia_2016_pancromatico',
+              title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            },
+            {
+              id: 10,
+              name: 'ortofotografia_2016_rgb',
+              title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            },
+            {
+              id: 11,
+              name: 'ortofotografia_2016_infrarrojo',
+              title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2013',
+      layerGroups: [
+        {
+          group: 'Año 2013',
+          layers: [
+            {
+              id: 8,
+              name: 'OCA05_2013',
+              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2011',
+      layerGroups: [{
+        group: 'Año 2011',
+        layers: [
+          {
+            id: 7,
+            name: 'OCA10_2010',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+          }
+        ]
+      }
+      ]
 
-   - ***field:*** Nombre del campo en el core de geosearh
-   - ***alias:*** Texto descriptivo del campo
-   - ***label:*** Texto a mostar a modo de ayuda 
+    },
+    {
+      name: 'Año 2009',
+      layerGroups: [
+        {
+          group: 'Año 2009',
+          layers: [
+            {
+              id: 6,
+              name: 'OCA10_2009',
+              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2007',
+      layerGroups: [
+        {
+          group: 'Año 2007',
+          layers: [
+            {
+              id: 5,
+              name: 'ORTO_2007',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+            }
+          ]
+        }
+      ]
 
+    },
+    {
+      name: 'Año 2004',
+      layerGroups: [
+        {
+          group: 'Año 2004',
+          layers: [
+            {
+              id: 4,
+              name: 'ORTO_2004',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+            }
+          ]
+        }
 
-- **infoFields: [array]** Campos que se desean mostrar una vez optenidos los resultados. El orden de definición de estos afecta al orden de aparición en la tabla resultante.
+      ]
+    },
+    {
+      name: 'Año 2001',
+      layerGroups: [
+        {
+          group: 'Año 2001',
+          layers: [
+            {
+              id: 3,
+              name: 'ORTO_2001',
+              title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 1998',
+      layerGroups: [
+        {
+          group: 'Año 1998',
+          layers: [
+            {
+              id: 2,
+              name: 'ortofoto1998',
+              title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+              style: 'default',
+              url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 1956',
+      layerGroups: [
+        {
+          group: 'Año 1956',
+          layers: [
+            {
+              id: 1,
+              name: 'REDIAM',
+              title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+              style: 'default',
+              url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
+- ### Ejemplo select anidado sin grupos ###
+```javascript
+const configOrtofotografias2 = {
+  title: 'Ortofotografías de Andalucia',
+  label: 'Año',
+  group: false,
+  data: [
+    {
+      name: 'Año 2016',
+      layers: [
+        {
+          id: 9,
+          name: 'ortofotografia_2016_pancromatico',
+          title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+        },
+        {
+          id: 10,
+          name: 'ortofotografia_2016_rgb',
+          title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+        },
+        {
+          id: 11,
+          name: 'ortofotografia_2016_infrarrojo',
+          title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2013',
+      layers: [
+        {
+          id: 8,
+          name: 'OCA05_2013',
+          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2011',
+      layers: [
+        {
+          id: 7,
+          name: 'OCA10_2010',
+          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2009',
+      layers: [
+        {
+          id: 6,
+          name: 'OCA10_2009',
+          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2007',
+      layers: [
+        {
+          id: 5,
+          name: 'ORTO_2007',
+          title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2004',
+      layers: [
+        {
+          id: 4,
+          name: 'ORTO_2004',
+          title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+        }
+      ]
+    },
+    {
+      name: 'Año 2001',
+      layers: [
+        {
+          id: 3,
+          name: 'ORTO_2001',
+          title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+        }
+      ]
+    },
+    {
+      name: 'Año 1998',
+      layer: [
+        {
+          id: 2,
+          name: 'ortofoto1998',
+          title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+          style: 'default',
+          url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+        }
+      ]
+    },
+    {
+      name: 'Año 1956',
+      layers: [
+        {
+          id: 1,
+          name: 'REDIAM',
+          title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+          style: 'default',
+          url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+        }
+      ]
+    }
+  ]
+}
 
-   - ***field:*** Nombre del campo en el core de geosearh
-   - ***alias:*** Texto descriptivo del campo
+```
 
+- ### Ejemplo select anidado con grupos ###
+```javascript
+const configOrtofotografias3 = {
+  title: 'Ortofotografías de Andalucia',
+  label: 'Año',
+  group: true,
+  data:
+  {
+    name: 'Año 2016',
+    layerGroups: [
+      {
+        group: 'Año 2016',
+        layers: [
+          {
+            id: 9,
+            name: 'ortofotografia_2016_pancromatico',
+            title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          },
+          {
+            id: 10,
+            name: 'ortofotografia_2016_rgb',
+            title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          },
+          {
+            id: 11,
+            name: 'ortofotografia_2016_infrarrojo',
+            title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2013',
+        layers: [
+          {
+            id: 8,
+            name: 'OCA05_2013',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2011',
+        layers: [
+          {
+            id: 7,
+            name: 'OCA10_2010',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
+          }
+        ]
+      },
+      {
+        group: 'Año 2009',
+        layers: [
+          {
+            id: 6,
+            name: 'OCA10_2009',
+            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
+          }
+        ]
+      }
+      , {
+        group: 'Año 2007',
+        layers: [
+          {
+            id: 5,
+            name: 'ORTO_2007',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
+          }
+        ]
+      }
+      , {
+        group: 'Año 2004',
+        layers: [
+          {
+            id: 4,
+            name: 'ORTO_2004',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
+          }
+        ]
+      }, {
+        group: 'Año 2001',
+        layers: [
+          {
+            id: 3,
+            name: 'ORTO_2001',
+            title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
+          }
+        ]
+      },
+      {
+        group: 'Año 1998',
+        layers: [
+          {
+            id: 2,
+            name: 'ortofoto1998',
+            title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+            style: 'default',
+            url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
+          }
+        ]
+      },
+      {
+        group: 'Año 1956',
+        layers: [
+          {
+            id: 1,
+            name: 'REDIAM',
+            title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+            style: 'default',
+            url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+- **title [string]:** ***<span style="color:red">Optativo</span>*** En caso de porporcionarse el título se mostrara arriba de los elementos select.
+- **label [string]:** Texto descripivo 
+- **group [boolean]:**  Solo admite valores _True_ o _False_ en caso de ser _True_ el select generado agrupara las capas en grupos mediante la etiqueta html ___optgroup___. 
+- **data [object]** o **[array]:** Este parámetro de configuración admite tanto un objeto json como un array de objetos json. 
+En el caso de que se pase un único objeto se generará una único select. Sin embargo si se pasa un array de objetos se generaran dos select. Estando el segundo select anidado con el primero.
+<br>
+
+  **Descripción del objeto data:**
+  
+  - **name [string]:** Nombre descriptivo.
+  - **layers [array]:** Array de objetos que porporciona los parámetros de configuración de los layers a cargar. En caso de estar incluido dentro de layerGroups seran los layers asociados al grupo.
+  
+      - ***id [integer]:*** Identificador unívoco para el layer. Este valor es usado como value del option del select
+      - ***name[string]:*** Nombre del layer wms
+      - ***title[string]:*** Título de la capa. Este valor es usado para el texto a mostrar en el option select
+      - ***style [string]:*** Estilo asociado a la capa, en cosa de contener el texto ***'default'*** se hará uso del estilo asignado por defecto al layer.
+      - ***url [string]:*** Url del servicio de mapas acabado en ***?***   
+   - **layerGroups [array]:** ***<span style="color:red">Optativo</span>*** En caso de haberse definido la propiedad ***group*** como ***true*** contendra los siguientes elementos
+      - **group [string]:** Nombre del grupo. se usa como value y texto de las opciones del primer select.
+      - **layers [array]**
+      
 
 ## Metodos
 
