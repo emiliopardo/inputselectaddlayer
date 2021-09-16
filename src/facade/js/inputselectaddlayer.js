@@ -64,10 +64,11 @@ export default class Inputselectaddlayer extends M.Plugin {
       tooltip: 'Aañadir capa'
     });
     this.panel_.addControls(this.controls_);
-    // this.panel_.on(M.evt.ADDED_TO_MAP, function (html) {
-    //   this_.panel_.open();
-    // });
     map.addPanels(this.panel_);
+
+    this.control_.on(M.evt.ADDED_TO_MAP, () => {
+      this.fire(M.evt.ADDED_TO_MAP);
+    });
 
     this.control_.on(M.evt.ADDED_WMS, ()=> {
       this.fire(M.evt.ADDED_WMS);
