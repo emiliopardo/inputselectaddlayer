@@ -9,7 +9,7 @@
  En función de la configuración suministrada el plugin puede generar cuatro tipo de select:
  
  - ***Select simple:*** Se genera un único input select en el que se listan todos los layers pasados en la configuración
- - ***Select simple con grupos:*** Se genera un único select en el se lista los layers pasados en la configuración agrupados mediante ***optgroup***.
+ - ***Select simple con grupos:*** Se genera un único select en el que se lista los layers pasados en la configuración agrupados mediante ***optgroup***.
  - ***Select anidado:*** Se generan dos select de tipo anidado. En función de la opción seleccionada en el primer select se muestran diferentes opciones en el segundo select. 
  - ***Select anidado con grupos:*** Se generan dos select de tipo anidado. En función de la opción seleccionada en el primer select se muestran diferentes opciones en el segundo select agrupados mediante ***optgroup***.
 
