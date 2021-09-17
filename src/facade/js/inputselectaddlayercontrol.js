@@ -266,7 +266,11 @@ export default class InputselectaddlayerControl extends M.Control {
     this.map_.addLayers([this.layer]);
     this.layer.displayInLayerSwitcher = true;
 
-    this.layer.on(M.evt.LOAD, ()=>{
+    if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
+      this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
+    }
+
+    this.layer.on(M.evt.LOAD, () => {
       this.fire(M.evt.ADDED_WMS)
     })
   }
