@@ -51,7 +51,7 @@ const ortofoto2013_color = new M.layer.WMS({
 })
 
 const ortofoto2011_color = new M.layer.WMS({
-  url: 'http://www.ideandalucia.es/wms/ortofoto2011?',
+  url: 'http://www.ideandalucia.es/wms/ortofoto2010?',
   name: 'OCA10_2010',
   legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
   transparent: true,
@@ -82,7 +82,7 @@ const ortofoto2007_color = new M.layer.WMS({
 
 const ortofoto2004_color = new M.layer.WMS({
   url: 'http://www.ideandalucia.es/wms/ortofoto2004?',
-  name: 'ORTO_2007',
+  name: 'ORTO_2004',
   legend: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
   transparent: true,
   tiled: true
