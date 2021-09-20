@@ -384,7 +384,7 @@ const configOrtofotografias7 = {
       ortofoto2004_color,
       ortofoto2001_pancromatica,
       ortofoto1998_color,
-      ortofoto1956
+      ortofoto1956_pancromatica
     ]
   }
 }
