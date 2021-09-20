@@ -196,8 +196,8 @@ export default class InputselectaddlayerControl extends M.Control {
     for (let index = 0; index < values.length; index++) {
       let layer = values[index];
       element = document.createElement('option');
-      element.value = layer.id;
-      element.textContent = layer.title
+      element.value = layer.name;
+      element.textContent = layer.legend
       this.layerSelector.appendChild(element);
     }
   }
@@ -223,8 +223,8 @@ export default class InputselectaddlayerControl extends M.Control {
               let layer = layers[index];
               this.layerList.push(layer);
               let option = document.createElement('option');
-              option.value = layer.id;
-              option.textContent = layer.title;
+              option.value = layer.name;
+              option.textContent = layer.legend;
               optgroup.appendChild(option);
             }
             find = true;
@@ -237,33 +237,20 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
-    this.map_.removeLayers(this.layer);
-    let selectedLayer = null;
     let find = false;
+    this.map_.removeLayers(this.layer);
     do {
       for (let i = 0; i < this.layerList.length; i++) {
-        if (this.layerList[i].id == value) {
-          this.layer = new M.layer.WMS({
-            url: this.layerList[i].url,
-            name: this.layerList[i].name,
-            legend: this.layerList[i].title,
-            transparent: true
-          }, {
-            params: {
-              styles: this.layerList[i].style,
-              layers: this.layerList[i].name
-            }
-          });
-
-          selectedLayer = this.layerList[i]
+        if (this.layerList[i].name == value) {
+          this.layer = this.layerList[i]
           find = true;
         }
       }
     } while (!find);
 
-    this.layer.setLegendURL(selectedLayer.url + 'service=WMS&version=1.1.1&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + selectedLayer.name + '&style=' + selectedLayer.style);
-    this.layer.setOpacity(0.9);
+
     this.map_.addLayers([this.layer]);
+    this.layer.setOpacity(0.9);
     this.layer.displayInLayerSwitcher = true;
 
     if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
