@@ -32,6 +32,42 @@ export default class InputselectaddlayerControl extends M.Control {
     this.title = config.title;
 
 
+    Handlebars.registerHelper('isVector', function (type) {
+      let result = null;
+      switch (type) {
+        case 'WMS':
+          result = false;
+          break;
+        case 'WMTS':
+          result = false;
+          break;
+        case 'WMC':
+          result = false;
+          break;
+        case 'Mapbox':
+          result = false;
+          break;
+        case 'OSM':
+          result = false;
+          break;
+        case 'WFS':
+          result = true;
+          break;
+        case 'GEoJSON':
+          result = true;
+          break;
+        case 'KML':
+          result = true;
+          break;
+        case 'MVT':
+          result = true;
+          break;
+        default:
+          result = false
+          break;
+      }
+      return result
+    })
   }
 
   /**
@@ -140,6 +176,7 @@ export default class InputselectaddlayerControl extends M.Control {
     } else {
       // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
+      console.log(this.layerList)
       this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
       this.template = templateSelect;
     }
@@ -196,7 +233,7 @@ export default class InputselectaddlayerControl extends M.Control {
     for (let index = 0; index < values.length; index++) {
       let layer = values[index];
       element = document.createElement('option');
-      element.value = layer.name+'*'+layer.options.styles;
+      element.value = layer.name + '*' + layer.options.styles;
       element.textContent = layer.legend
       this.layerSelector.appendChild(element);
     }
@@ -223,7 +260,7 @@ export default class InputselectaddlayerControl extends M.Control {
               let layer = layers[index];
               this.layerList.push(layer);
               let option = document.createElement('option');
-              option.value = layer.name+'*'+layer.options.styles;
+              option.value = layer.name + '*' + layer.options.styles;
               option.textContent = layer.legend;
               optgroup.appendChild(option);
             }
@@ -237,29 +274,30 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
-    let name = value.split('*')[0]
-    let style = value.split('*')[1]
-    let find = false;
-    this.map_.removeLayers(this.layer);
-    do {
-      for (let i = 0; i < this.layerList.length; i++) {
-        if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
-          this.layer = this.layerList[i]
-          find = true;
-        }
-      }
-    } while (!find);
+    console.log(value)
+    //   let name = value.split('*')[0]
+    //   let style = value.split('*')[1]
+    //   let find = false;
+    //   this.map_.removeLayers(this.layer);
+    //   do {
+    //     for (let i = 0; i < this.layerList.length; i++) {
+    //       if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
+    //         this.layer = this.layerList[i]
+    //         find = true;
+    //       }
+    //     }
+    //   } while (!find);
 
-    this.map_.addLayers([this.layer]);
-    this.layer.setOpacity(0.9);
-    this.layer.displayInLayerSwitcher = true;
+    //   this.map_.addLayers([this.layer]);
+    //   this.layer.setOpacity(0.9);
+    //   this.layer.displayInLayerSwitcher = true;
 
-    if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
-      this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
-    }
+    //   if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
+    //     this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
+    //   }
 
-    this.layer.on(M.evt.LOAD, () => {
-      this.fire(M.evt.ADDED_WMS)
-    })
+    //   this.layer.on(M.evt.LOAD, () => {
+    //     this.fire(M.evt.ADDED_WMS)
+    //   })
   }
 }

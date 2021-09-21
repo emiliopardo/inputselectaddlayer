@@ -6,10 +6,14 @@
     </div>
     {{/if}}
     <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
-      <select id='layerSelector' class="m-inputselectaddlayer-select" name="select">
+      <select id="layerSelector" class="m-inputselectaddlayer-select" name="select">
         <option value=""> --- Selecciona una capa --- </option>
         {{#each layers}}
+        {{#if (isVector this.type)}}
+        <option value="{{this.name}}">{{this.legend}}</option>
+        {{else}}
         <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
+        {{/if}}
         {{/each}}
         </optgroup>
       </select>
