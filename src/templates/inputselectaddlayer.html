@@ -9,11 +9,7 @@
       <select id="layerSelector" class="m-inputselectaddlayer-select" name="select">
         <option value=""> --- Selecciona una capa --- </option>
         {{#each layers}}
-        <!-- {{#if (isVector this.type)}}
-        <option value="{{this.name}}">{{this.legend}}</option>
-        {{else}}
-        <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
-        {{/if}} -->
+
         <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
         {{/each}}
         </optgroup>
