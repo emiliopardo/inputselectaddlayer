@@ -12,7 +12,7 @@
         {{#each groups}}
         <optgroup label="{{group}}">
           {{#each layers}}
-          <option value="{{this.name}}">{{this.legend}}</option>
+          <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
           {{/each}}
           {{/each}}
         </optgroup>

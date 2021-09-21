@@ -196,7 +196,7 @@ export default class InputselectaddlayerControl extends M.Control {
     for (let index = 0; index < values.length; index++) {
       let layer = values[index];
       element = document.createElement('option');
-      element.value = layer.name;
+      element.value = layer.name+'*'+layer.options.styles;
       element.textContent = layer.legend
       this.layerSelector.appendChild(element);
     }
@@ -223,7 +223,7 @@ export default class InputselectaddlayerControl extends M.Control {
               let layer = layers[index];
               this.layerList.push(layer);
               let option = document.createElement('option');
-              option.value = layer.name;
+              option.value = layer.name+'*'+layer.options.styles;
               option.textContent = layer.legend;
               optgroup.appendChild(option);
             }
@@ -237,17 +237,18 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
+    let name = value.split('*')[0]
+    let style = value.split('*')[1]
     let find = false;
     this.map_.removeLayers(this.layer);
     do {
       for (let i = 0; i < this.layerList.length; i++) {
-        if (this.layerList[i].name == value) {
+        if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
           this.layer = this.layerList[i]
           find = true;
         }
       }
     } while (!find);
-
 
     this.map_.addLayers([this.layer]);
     this.layer.setOpacity(0.9);
