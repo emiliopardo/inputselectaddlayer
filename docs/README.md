@@ -25,6 +25,127 @@ Para el correcto funcionamiento del plugin es necesario pasarle en su constructo
 La generación de select simple, ,select simple con grupos, select anidado o select anidado con grupos depende de los parámetros de configuración proporcionados.
 
 A continuación se proporcionan un ejemplo para cada una de las configuraciones tomando como base las Ortofotografías de Andalucía.
+
+- ### Definición Layers de Mapea ###
+
+Antes de generar la configuración del plugin es necesario tener definidos los layers que se desean cargar.
+
+El plugin admite el uso tanto de layer ___Raster___ como ___Vectoriales___
+```javascript
+
+//DEFINICION DE LAYERS
+
+const ortofoto2016_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_pancromatico',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_rgb',
+  legend: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_infrarrojo = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_infrarrojo',
+  legend: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2013_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2013?',
+  name: 'OCA05_2013',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2011_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2010?',
+  name: 'OCA10_2010',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2009_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2009?',
+  name: 'OCA10_2009',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2007_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2007?',
+  name: 'ORTO_2007',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2004_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2004?',
+  name: 'ORTO_2004',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2001_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2001?',
+  name: 'ORTO_2001',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1998_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto1998?',
+  name: 'ortofoto1998',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1956_pancromatica = new M.layer.WMS({
+  url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?',
+  name: 'REDIAM',
+  legend: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+```
+
 - ### Ejemplo select simple ###
 
 ```javascript
@@ -331,7 +452,7 @@ El plugin expone dos eventos
 - ***M.evt.ADDED_TO_MAP:*** Se dispara cuando se carga el control del plugin 
 - ***M.evt.LOAD:*** Se dispara cuando se carga una capa mediante el plugin
 
-Al exponer el evento ***M.evt.ADDED_WMS*** cada vez que se carga un layer con el plugin es posible saber en cada momento que capa esta actualemente cargada combinando dicho evento con el metodo getLayer() del plugin.
+Al exponer el evento ***M.evt.LOAD*** cada vez que se carga un layer con el plugin es posible saber en cada momento que capa esta actualemente cargada combinando dicho evento con el metodo getLayer() del plugin.
 
 ```javascript
 const mp = new Inputselectaddlayer(configGridPoblacion);
