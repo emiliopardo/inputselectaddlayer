@@ -672,4 +672,4 @@ mp.on(M.evt.LOAD, () => {
 
 ## Video Demo
 
-Para comprobar el funcionamiento de este plugin se puede descargar el [Video](https://github.com/emiliopardo/inputselectaddlayer/blob/master/docs/video/inputselectaddlayer.webm?raw=true) el cual contempla la configuración y carga del plugin con diferentes geosearch
+Para comprobar el funcionamiento de este plugin se puede descargar el [Video](https://github.com/emiliopardo/inputselectaddlayer/blob/master/docs/video/inputselectaddlayer.webm?raw=true) el cual contempla la configuración y carga del plugin.
