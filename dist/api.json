@@ -1,0 +1,38 @@
+{
+  "url": {
+    "name": "Inputselectaddlayer",
+    "separator": "*"
+  },
+  "constructor": "M.plugin.Inputselectaddlayer",
+  "parameters": [],
+  "files": {
+    "ol": {
+      "scripts": ["inputselectaddlayer.ol.min.js"],
+      "styles": ["inputselectaddlayer.ol.min.css"]
+    }
+  },
+  "metadata": {
+    "uuid_plugin": "",
+    "uuid_version_plugin": "",
+    "version_ficha_metadatos": "",
+    "name": "Inputselectaddlayer",
+    "description": "Plugin de Mapea para la carga de Layers de Mapea tanto Raster como Vectoriales mediante elementos html de tipo input select",
+    "text": "Plugin que permite la carga de Layers de Mapea a partir de un input select. Según los parámetros de configuración se generaran select simples o anidados y optgroups",
+    "version": "1.0.0",
+    "date": "Septiembre, 2021",
+    "author": "Emilio Pardo",
+    "org": "",
+    "tags": "mapea,plugin",
+    "icon": "./facade/assets/icons/icons.svg",
+    "buttons": [
+      { "title": "", "description": "", "querySelector": "" },
+      { "title": "", "description": "", "querySelector": "" }
+    ],
+    "dependencies": {
+      "modules": ["", ""],
+      "plugins": [{ "uuid": "", "name": "" }],
+      "services": [{ "name": "", "description": "" }]
+    },
+    "compatibility": ["6.0.0"]
+  }
+}

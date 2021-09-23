@@ -70,8 +70,8 @@ export default class Inputselectaddlayer extends M.Plugin {
       this.fire(M.evt.ADDED_TO_MAP);
     });
 
-    this.control_.on(M.evt.ADDED_WMS, ()=> {
-      this.fire(M.evt.ADDED_WMS);
+    this.control_.on(M.evt.LOAD, ()=> {
+      this.fire(M.evt.LOAD);
     })
   }
   /**

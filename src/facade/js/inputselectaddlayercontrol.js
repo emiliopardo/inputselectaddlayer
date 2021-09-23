@@ -30,10 +30,7 @@ export default class InputselectaddlayerControl extends M.Control {
     this.config = config;
     this.checkConfig(this.config);
     this.title = config.title;
-
-
   }
-
   /**
    * This function creates the view
    *
@@ -140,6 +137,7 @@ export default class InputselectaddlayerControl extends M.Control {
     } else {
       // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
+
       this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
       this.template = templateSelect;
     }
@@ -196,8 +194,8 @@ export default class InputselectaddlayerControl extends M.Control {
     for (let index = 0; index < values.length; index++) {
       let layer = values[index];
       element = document.createElement('option');
-      element.value = layer.id;
-      element.textContent = layer.title
+      element.value = layer.name + '*' + layer.options.styles;
+      element.textContent = layer.legend
       this.layerSelector.appendChild(element);
     }
   }
@@ -223,8 +221,8 @@ export default class InputselectaddlayerControl extends M.Control {
               let layer = layers[index];
               this.layerList.push(layer);
               let option = document.createElement('option');
-              option.value = layer.id;
-              option.textContent = layer.title;
+              option.value = layer.name + '*' + layer.options.styles;
+              option.textContent = layer.legend;
               optgroup.appendChild(option);
             }
             find = true;
@@ -237,41 +235,31 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
-    this.map_.removeLayers(this.layer);
-    let selectedLayer = null;
-    let find = false;
-    do {
-      for (let i = 0; i < this.layerList.length; i++) {
-        if (this.layerList[i].id == value) {
-          this.layer = new M.layer.WMS({
-            url: this.layerList[i].url,
-            name: this.layerList[i].name,
-            legend: this.layerList[i].title,
-            transparent: true
-          }, {
-            params: {
-              styles: this.layerList[i].style,
-              layers: this.layerList[i].name
-            }
-          });
-
-          selectedLayer = this.layerList[i]
-          find = true;
+      let name = value.split('*')[0]
+      let style = value.split('*')[1]
+      let find = false;
+      this.map_.removeLayers(this.layer);
+      do {
+        for (let i = 0; i < this.layerList.length; i++) {
+          if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
+            this.layer = this.layerList[i]
+            find = true;
+          }else if(this.layerList[i].name == name){
+            this.layer = this.layerList[i]
+            find = true;
+          }
         }
+      } while (!find);
+      this.map_.addLayers([this.layer]);
+      this.layer.setOpacity(0.9);
+      this.layer.displayInLayerSwitcher = true;
+
+      if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
+        this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
       }
-    } while (!find);
 
-    this.layer.setLegendURL(selectedLayer.url + 'service=WMS&version=1.1.1&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=' + selectedLayer.name + '&style=' + selectedLayer.style);
-    this.layer.setOpacity(0.9);
-    this.map_.addLayers([this.layer]);
-    this.layer.displayInLayerSwitcher = true;
-
-    if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
-      this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
-    }
-
-    this.layer.on(M.evt.LOAD, () => {
-      this.fire(M.evt.ADDED_WMS)
-    })
+      this.layer.on(M.evt.LOAD, () => {
+        this.fire(M.evt.LOAD)
+      })
   }
 }

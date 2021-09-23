@@ -4,7 +4,7 @@
 
 ## Descripción
 
- Plugin de [Mapea](https://github.com/sigcorporativo-ja/Mapea4) para la carga de capas WMS mediante un elemento  html input select
+ Plugin de [Mapea](https://github.com/sigcorporativo-ja/Mapea4) para la carga de layers de Mapea tanto Raster como Vectoriales mediante un elemento  html input select
 
  En función de la configuración suministrada el plugin puede generar cuatro tipo de select:
  
@@ -15,12 +15,137 @@
 
 ![Imagen](./images/inputselectaddlayerPlugin.png)
 
+Previamente a la definición de los parámetros de configuración del plugin los layers a cargar deben de haberse definido.
+
+En la [Wiki de Mapea](https://github.com/sigcorporativo-ja/Mapea4/wiki/Capas) viene detallada cada una de las definiciones de los diferentes tipos de Layers
+
 Para el correcto funcionamiento del plugin es necesario pasarle en su constructor un objeto **json** con los parámetros esperados.
 ### Parámetros del plugin
 
 La generación de select simple, ,select simple con grupos, select anidado o select anidado con grupos depende de los parámetros de configuración proporcionados.
 
 A continuación se proporcionan un ejemplo para cada una de las configuraciones tomando como base las Ortofotografías de Andalucía.
+
+- ### Definición Layers de Mapea ###
+
+Antes de generar la configuración del plugin es necesario tener definidos los layers que se desean cargar.
+
+El plugin admite el uso tanto de layer ___Raster___ como ___Vectoriales___
+```javascript
+
+//DEFINICION DE LAYERS
+
+const ortofoto2016_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_pancromatico',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_rgb',
+  legend: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_infrarrojo = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_infrarrojo',
+  legend: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2013_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2013?',
+  name: 'OCA05_2013',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2011_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2010?',
+  name: 'OCA10_2010',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2009_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2009?',
+  name: 'OCA10_2009',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2007_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2007?',
+  name: 'ORTO_2007',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2004_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2004?',
+  name: 'ORTO_2004',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2001_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2001?',
+  name: 'ORTO_2001',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1998_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto1998?',
+  name: 'ortofoto1998',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1956_pancromatica = new M.layer.WMS({
+  url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?',
+  name: 'REDIAM',
+  legend: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+```
+
 - ### Ejemplo select simple ###
 
 ```javascript
@@ -32,80 +157,17 @@ const configOrtofotografias4 = {
   {
     name: 'Año 2016',
     layers: [
-      {
-        id: 11,
-        name: 'ortofotografia_2016_infrarrojo',
-        title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-      },
-      {
-        id: 10,
-        name: 'ortofotografia_2016_rgb',
-        title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-      },
-      {
-        id: 9,
-        name: 'ortofotografia_2016_pancromatico',
-        title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-      },
-      {
-        id: 8,
-        name: 'OCA05_2013',
-        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
-      },
-      {
-        id: 7,
-        name: 'OCA10_2010',
-        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
-      }, {
-        id: 6,
-        name: 'OCA10_2009',
-        title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
-      },
-      {
-        id: 5,
-        name: 'ORTO_2007',
-        title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
-      },
-      {
-        id: 4,
-        name: 'ORTO_2004',
-        title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
-      }, {
-        id: 3,
-        name: 'ORTO_2001',
-        title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-      },
-      {
-        id: 2,
-        name: 'ortofoto1998',
-        title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-        style: 'default',
-        url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-      }, {
-        id: 1,
-        name: 'REDIAM',
-        title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-        style: 'default',
-        url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-      }
+      ortofoto2016_color,
+      ortofoto2016_pancromatica,
+      ortofoto2016_infrarrojo,
+      ortofoto2013_color,
+      ortofoto2011_color,
+      ortofoto2009_color,
+      ortofoto2007_color,
+      ortofoto2004_color,
+      ortofoto2001_pancromatica,
+      ortofoto1998_color,
+      ortofoto1956_pancromatica
     ]
   }
 }
@@ -114,181 +176,71 @@ const configOrtofotografias4 = {
 - ### Ejemplo select simple con grupos ###
 
 ```javascript
-const configOrtofotografias1 = {
+const configOrtofotografias3 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
   group: true,
-  data: [
-    {
-      name: 'Año 2016',
-      layerGroups: [
-        {
-          group: 'Año 2016',
-          layers: [
-            {
-              id: 9,
-              name: 'ortofotografia_2016_pancromatico',
-              title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-            },
-            {
-              id: 10,
-              name: 'ortofotografia_2016_rgb',
-              title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-            },
-            {
-              id: 11,
-              name: 'ortofotografia_2016_infrarrojo',
-              title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 2013',
-      layerGroups: [
-        {
-          group: 'Año 2013',
-          layers: [
-            {
-              id: 8,
-              name: 'OCA05_2013',
-              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 2011',
-      layerGroups: [{
+  data:
+  {
+    name: 'Año 2016',
+    layerGroups: [
+      {
+        group: 'Año 2016',
+        layers: [
+          ortofoto2016_color,
+          ortofoto2016_pancromatica,
+          ortofoto2016_infrarrojo
+        ]
+      },
+      {
+        group: 'Año 2013',
+        layers: [
+          ortofoto2013_color
+        ]
+      },
+      {
         group: 'Año 2011',
         layers: [
-          {
-            id: 7,
-            name: 'OCA10_2010',
-            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
-          }
+          ortofoto2011_color
+        ]
+      },
+      {
+        group: 'Año 2009',
+        layers: [
+          ortofoto2009_color
         ]
       }
-      ]
-
-    },
-    {
-      name: 'Año 2009',
-      layerGroups: [
-        {
-          group: 'Año 2009',
-          layers: [
-            {
-              id: 6,
-              name: 'OCA10_2009',
-              title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 2007',
-      layerGroups: [
-        {
-          group: 'Año 2007',
-          layers: [
-            {
-              id: 5,
-              name: 'ORTO_2007',
-              title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
-            }
-          ]
-        }
-      ]
-
-    },
-    {
-      name: 'Año 2004',
-      layerGroups: [
-        {
-          group: 'Año 2004',
-          layers: [
-            {
-              id: 4,
-              name: 'ORTO_2004',
-              title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
-            }
-          ]
-        }
-
-      ]
-    },
-    {
-      name: 'Año 2001',
-      layerGroups: [
-        {
-          group: 'Año 2001',
-          layers: [
-            {
-              id: 3,
-              name: 'ORTO_2001',
-              title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 1998',
-      layerGroups: [
-        {
-          group: 'Año 1998',
-          layers: [
-            {
-              id: 2,
-              name: 'ortofoto1998',
-              title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-              style: 'default',
-              url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 1956',
-      layerGroups: [
-        {
-          group: 'Año 1956',
-          layers: [
-            {
-              id: 1,
-              name: 'REDIAM',
-              title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-              style: 'default',
-              url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+      , {
+        group: 'Año 2007',
+        layers: [
+          ortofoto2007_color
+        ]
+      }
+      , {
+        group: 'Año 2004',
+        layers: [
+          ortofoto2004_color
+        ]
+      }, {
+        group: 'Año 2001',
+        layers: [
+          ortofoto2001_pancromatica
+        ]
+      },
+      {
+        group: 'Año 1998',
+        layers: [
+          ortofoto1998_color
+        ]
+      },
+      {
+        group: 'Año 1956',
+        layers: [
+          ortofoto1956_pancromatica
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -302,123 +254,57 @@ const configOrtofotografias2 = {
     {
       name: 'Año 2016',
       layers: [
-        {
-          id: 9,
-          name: 'ortofotografia_2016_pancromatico',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 10,
-          name: 'ortofotografia_2016_rgb',
-          title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        },
-        {
-          id: 11,
-          name: 'ortofotografia_2016_infrarrojo',
-          title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-        }
+        ortofoto2016_color,
+        ortofoto2016_pancromatica,
+        ortofoto2016_infrarrojo
       ]
     },
     {
       name: 'Año 2013',
       layers: [
-        {
-          id: 8,
-          name: 'OCA05_2013',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
-        }
+        ortofoto2013_color
       ]
     },
     {
       name: 'Año 2011',
       layers: [
-        {
-          id: 7,
-          name: 'OCA10_2010',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
-        }
+        ortofoto2011_color
       ]
     },
     {
       name: 'Año 2009',
       layers: [
-        {
-          id: 6,
-          name: 'OCA10_2009',
-          title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
-        }
+        ortofoto2009_color
       ]
     },
     {
       name: 'Año 2007',
       layers: [
-        {
-          id: 5,
-          name: 'ORTO_2007',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
-        }
+        ortofoto2007_color
       ]
     },
     {
       name: 'Año 2004',
       layers: [
-        {
-          id: 4,
-          name: 'ORTO_2004',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
-        }
+        ortofoto2004_color
       ]
     },
     {
       name: 'Año 2001',
       layers: [
-        {
-          id: 3,
-          name: 'ORTO_2001',
-          title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-        }
+        ortofoto2001_pancromatica
       ]
     },
     {
       name: 'Año 1998',
       layer: [
-        {
-          id: 2,
-          name: 'ortofoto1998',
-          title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-          style: 'default',
-          url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-        }
+        ortofoto1998_color
       ]
     },
     {
       name: 'Año 1956',
       layers: [
-        {
-          id: 1,
-          name: 'REDIAM',
-          title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-          style: 'default',
-          url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-        }
+        ortofoto1956_pancromatica
       ]
     }
   ]
@@ -428,137 +314,113 @@ const configOrtofotografias2 = {
 
 - ### Ejemplo select anidado con grupos ###
 ```javascript
-const configOrtofotografias3 = {
+const configOrtofotografias1 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
   group: true,
-  data:
-  {
-    name: 'Año 2016',
-    layerGroups: [
-      {
-        group: 'Año 2016',
-        layers: [
-          {
-            id: 9,
-            name: 'ortofotografia_2016_pancromatico',
-            title: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-          },
-          {
-            id: 10,
-            name: 'ortofotografia_2016_rgb',
-            title: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-          },
-          {
-            id: 11,
-            name: 'ortofotografia_2016_infrarrojo',
-            title: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2016?'
-          }
-        ]
-      },
-      {
-        group: 'Año 2013',
-        layers: [
-          {
-            id: 8,
-            name: 'OCA05_2013',
-            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2013?'
-          }
-        ]
-      },
-      {
-        group: 'Año 2011',
-        layers: [
-          {
-            id: 7,
-            name: 'OCA10_2010',
-            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2010?'
-          }
-        ]
-      },
-      {
-        group: 'Año 2009',
-        layers: [
-          {
-            id: 6,
-            name: 'OCA10_2009',
-            title: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2009?'
-          }
-        ]
-      }
-      , {
-        group: 'Año 2007',
-        layers: [
-          {
-            id: 5,
-            name: 'ORTO_2007',
-            title: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2007?'
-          }
-        ]
-      }
-      , {
-        group: 'Año 2004',
-        layers: [
-          {
-            id: 4,
-            name: 'ORTO_2004',
-            title: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2004?'
-          }
-        ]
-      }, {
-        group: 'Año 2001',
-        layers: [
-          {
-            id: 3,
-            name: 'ORTO_2001',
-            title: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto2001?'
-          }
-        ]
-      },
-      {
-        group: 'Año 1998',
-        layers: [
-          {
-            id: 2,
-            name: 'ortofoto1998',
-            title: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
-            style: 'default',
-            url: 'http://www.ideandalucia.es/wms/ortofoto1998?'
-          }
-        ]
-      },
-      {
-        group: 'Año 1956',
-        layers: [
-          {
-            id: 1,
-            name: 'REDIAM',
-            title: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
-            style: 'default',
-            url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?'
-          }
-        ]
-      }
-    ]
-  }
+  data: [
+    {
+      name: 'Año 2016',
+      layerGroups: [
+        {
+          group: 'Año 2016',
+          layers: [
+            ortofoto2016_pancromatica,
+            ortofoto2016_infrarrojo,
+            ortofoto2016_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2013',
+      layerGroups: [
+        {
+          group: 'Año 2013',
+          layers: [
+            ortofoto2013_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2011',
+      layerGroups: [
+        {
+          group: 'Año 2011',
+          layers: [
+            ortofoto2011_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2009',
+      layerGroups: [
+        {
+          group: 'Año 2009',
+          layers: [
+            ortofoto2009_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2007',
+      layerGroups: [
+        {
+          group: 'Año 2007',
+          layers: [
+            ortofoto2007_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2004',
+      layerGroups: [
+        {
+          group: 'Año 2004',
+          layers: [
+            ortofoto2004_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 2001',
+      layerGroups: [
+        {
+          group: 'Año 2001',
+          layers: [
+            ortofoto2001_pancromatica
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 1998',
+      layerGroups: [
+        {
+          group: 'Año 1998',
+          layers: [
+            ortofoto1998_color
+          ]
+        }
+      ]
+    },
+    {
+      name: 'Año 1956',
+      layerGroups: [
+        {
+          group: 'Año 1956',
+          layers: [
+            ortofoto1956_pancromatica
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -572,16 +434,11 @@ En el caso de que se pase un único objeto se generará una único select. Sin e
   **Descripción del objeto data:**
   
   - **name [string]:** Nombre descriptivo.
-  - **layers [array]:** Array de objetos que porporciona los parámetros de configuración de los layers a cargar. En caso de estar incluido dentro de layerGroups seran los layers asociados al grupo.
-  
-      - ***id [integer]:*** Identificador unívoco para el layer. Este valor es usado como value del option del select
-      - ***name[string]:*** Nombre del layer wms
-      - ***title[string]:*** Título de la capa. Este valor es usado para el texto a mostrar en el option select
-      - ***style [string]:*** Estilo asociado a la capa, en cosa de contener el texto ***'default'*** se hará uso del estilo asignado por defecto al layer.
-      - ***url [string]:*** Url del servicio de mapas acabado en ***?***   
+  - **layers [array]:** Array de layers de Mapea.
+
    - **layerGroups [array]:** ***<span style="color:red">Optativo</span>*** En caso de haberse definido la propiedad ***group*** como ***true*** contendra los siguientes elementos
       - **group [string]:** Nombre del grupo. se usa como value y texto de las opciones del primer select.
-      - **layers [array]**
+      - **layers [array]**: Array de layers de Mapea.
       
 
 ## Metodos
@@ -593,9 +450,9 @@ El plugin cuenta con el método ***getLayer()*** el cual permite obtener el laye
 El plugin expone dos eventos 
 
 - ***M.evt.ADDED_TO_MAP:*** Se dispara cuando se carga el control del plugin 
-- ***M.evt.ADDED_WMS:*** Se dispara cuando se carga una capa mediante el plugin
+- ***M.evt.LOAD:*** Se dispara cuando se carga una capa mediante el plugin
 
-Al exponer el evento ***M.evt.ADDED_WMS*** cada vez que se carga un layer con el plugin es posible saber en cada momento que capa esta actualemente cargada combinando dicho evento con el metodo getLayer() del plugin.
+Al exponer el evento ***M.evt.LOAD*** cada vez que se carga un layer con el plugin es posible saber en cada momento que capa esta actualemente cargada combinando dicho evento con el metodo getLayer() del plugin.
 
 ```javascript
 const mp = new Inputselectaddlayer(configGridPoblacion);
@@ -606,7 +463,7 @@ mp.on(M.evt.ADDED_TO_MAP, () => {
   console.log('se cargo el plugin');
 })
 
-mp.on(M.evt.ADDED_WMS, () => {
+mp.on(M.evt.LOAD, () => {
   console.log('se cargo una capa');
   console.log(mp.getLayer().name)
 })
@@ -619,460 +476,187 @@ mp.on(M.evt.ADDED_WMS, () => {
 
 ```javascript
 
-const configGridPoblacion = {
-  title: 'Distribución espacial de la población',
+//DEFINICION DE LAYERS
+
+const ortofoto2016_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_pancromatico',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_rgb',
+  legend: 'Ortofotografía Color 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2016_infrarrojo = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2016?',
+  name: 'ortofotografia_2016_infrarrojo',
+  legend: 'Ortofotografía Infrarrojo 0,5 metros/pixel (Año 2016)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2013_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2013?',
+  name: 'OCA05_2013',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2013)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2011_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2010?',
+  name: 'OCA10_2010',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2011)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2009_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2009?',
+  name: 'OCA10_2009',
+  legend: 'Ortofotografía en Color 0,5 metros/pixel (Año 2009)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2007_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2007?',
+  name: 'ORTO_2007',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2007)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2004_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2004?',
+  name: 'ORTO_2004',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 2004)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto2001_pancromatica = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto2001?',
+  name: 'ORTO_2001',
+  legend: 'Ortofotografía Pancromática 0,5 metros/pixel  (Año 2001)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1998_color = new M.layer.WMS({
+  url: 'http://www.ideandalucia.es/wms/ortofoto1998?',
+  name: 'ortofoto1998',
+  legend: 'Ortofotografía en Color 1 metro/pixel (Año 1998)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+const ortofoto1956_pancromatica = new M.layer.WMS({
+  url: 'http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956?',
+  name: 'REDIAM',
+  legend: 'Ortofotografía Pancromática 1 metro/pixel (Año 1956)',
+  transparent: true,
+  tiled: true
+}, {
+  styles: 'default'
+})
+
+
+// DEFINICION CONFIGPLUGIN
+/* Select Anidado y sin Option Group**/
+const configOrtofotografias2 = {
+  title: 'Ortofotografías de Andalucia',
   label: 'Año',
-  group: true,
+  group: false,
   data: [
     {
-      name: 'Año 2019',
-      layerGroups: [
-        {
-          group: 'Población',
-          layers: [
-            {
-              id: 1,
-              name: 'gridpob_250',
-              title: 'Número de habitantes',
-              style: 'stl_poblacion_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob/wms?'
-            },
-            {
-              id: 2,
-              name: 'gridpob_250',
-              title: 'Nº hab. Menores de 16 años',
-              style: 'stl_poblacion_edad0015',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob/wms?'
-            },
-            {
-              id: 3,
-              name: 'gridpob_250',
-              title: 'Nº hab. De 16 a 64 años',
-              style: 'stl_poblacion_edad1664',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob/wms?'
-            },
-            {
-              id: 4,
-              name: 'gridpob_250',
-              title: 'Nº hab. Mayores de 64 años',
-              style: 'stl_poblacion_edad65_',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Afiliados a la Seguridad Social',
-          layers: [
-            {
-              id: 5,
-              name: 'gridafil_250',
-              title: 'Afiliados a la Seguridad Social',
-              style: 'stl_segsoc_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil/wms?'
-            },
-            {
-              id: 6,
-              name: 'gridafil_250',
-              title: 'Afiliados por cuenta propia',
-              style: 'stl_segsoc_rellabprop',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil/wms?'
-            },
-            {
-              id: 7,
-              name: 'gridafil_250',
-              title: 'Afiliados por cuenta ajena',
-              style: 'stl_segsoc_rellabajen',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Pensionistas de la Seguridad Social',
-          layers: [
-            {
-              id: 8,
-              name: 'gridpenc_250',
-              title: 'Número de Pensionistas',
-              style: 'stl_pensiones_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            },
-            {
-              id: 9,
-              name: 'gridpenc_250',
-              title: 'Pensionistas por jubilación',
-              style: 'stl_penc_tipjub',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            },
-            {
-              id: 10,
-              name: 'gridpenc_250',
-              title: 'Pensionistas por viudedad',
-              style: 'stl_penc_tipviu',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            },
-            {
-              id: 11,
-              name: 'gridpenc_250',
-              title: 'Pensionistas por jubilación y viudedad',
-              style: 'stl_penc_tipjyv',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            },
-            {
-              id: 12,
-              name: 'gridpenc_250',
-              title: 'Pensionistas por incapacidad',
-              style: 'stl_penc_tipinc',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            },
-            {
-              id: 13,
-              name: 'gridpenc_250',
-              title: 'Otro tipo de pensionistas',
-              style: 'stl_penc_tipotr',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc/wms?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 2018',
-      layerGroups: [
-        {
-          group: 'Población',
-          layers: [
-            {
-              id: 14,
-              name: 'gridpob18_250',
-              title: 'Número de habitantes',
-              style: 'stl_poblacion_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2018/wms?'
-            },
-            {
-              id: 15,
-              name: 'gridpob18_250',
-              title: 'Nº hab. Menores de 16 años',
-              style: 'stl_poblacion_edad0015',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2018/wms?'
-            },
-            {
-              id: 16,
-              name: 'gridpob18_250',
-              title: 'Nº hab. De 16 a 64 años',
-              style: 'stl_poblacion_edad1664',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2018/wms?'
-            },
-            {
-              id: 17,
-              name: 'gridpob18_250',
-              title: 'Nº hab. Mayores de 64 años',
-              style: 'stl_poblacion_edad65_',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2018/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Afiliados a la Seguridad Social',
-          layers: [
-            {
-              id: 18,
-              name: 'gridafil18_250',
-              title: 'Afiliados a la Seguridad Social',
-              style: 'stl_segsoc_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2018/wms?'
-            },
-            {
-              id: 19,
-              name: 'gridafil18_250',
-              title: 'Afiliados por cuenta propia',
-              style: 'stl_segsoc_rellabprop',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2018/wms?'
-            },
-            {
-              id: 20,
-              name: 'gridafil18_250',
-              title: 'Afiliados por cuenta ajena',
-              style: 'stl_segsoc_rellabajen',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2018/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Pensionistas de la Seguridad Social',
-          layers: [
-            {
-              id: 21,
-              name: 'gridpenc18_250',
-              title: 'Número de Pensionistas',
-              style: 'stl_pensiones_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            },
-            {
-              id: 22,
-              name: 'gridpenc18_250',
-              title: 'Pensionistas por jubilación',
-              style: 'stl_penc_tipjub',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            },
-            {
-              id: 23,
-              name: 'gridpenc18_250',
-              title: 'Pensionistas por viudedad',
-              style: 'stl_penc_tipviu',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            },
-            {
-              id: 24,
-              name: 'gridpenc18_250',
-              title: 'Pensionistas por jubilación y viudedad',
-              style: 'stl_penc_tipjyv',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            },
-            {
-              id: 25,
-              name: 'gridpenc18_250',
-              title: 'Pensionistas por incapacidad',
-              style: 'stl_penc_tipinc',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            },
-            {
-              id: 26,
-              name: 'gridpenc18_250',
-              title: 'Otro tipo de pensionistas',
-              style: 'stl_penc_tipotr',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2018/wms?'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Año 2017',
-      layerGroups: [
-        {
-          group: 'Población',
-          layers: [
-            {
-              id: 27,
-              name: 'gridpob17_250',
-              title: 'Número de habitantes',
-              style: 'stl_poblacion_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2017/wms?'
-            },
-            {
-              id: 28,
-              name: 'gridpob17_250',
-              title: 'Nº hab. Menores de 16 años',
-              style: 'stl_poblacion_edad0015',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2017/wms?'
-            },
-            {
-              id: 29,
-              name: 'gridpob17_250',
-              title: 'Nº hab. De 16 a 64 años',
-              style: 'stl_poblacion_edad1664',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2017/wms?'
-            },
-            {
-              id: 30,
-              name: 'gridpob17_250',
-              title: 'Nº hab. Mayores de 64 años',
-              style: 'stl_poblacion_edad65_',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2017/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Afiliados a la Seguridad Social',
-          layers: [
-            {
-              id: 31,
-              name: 'gridafil17_250',
-              title: 'Afiliados a la Seguridad Social',
-              style: 'stl_segsoc_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2017/wms?'
-            },
-            {
-              id: 32,
-              name: 'gridafil17_250',
-              title: 'Afiliados por cuenta propia',
-              style: 'stl_segsoc_rellabprop',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2017/wms?'
-            },
-            {
-              id: 33,
-              name: 'gridafil17_250',
-              title: 'Afiliados por cuenta ajena',
-              style: 'stl_segsoc_rellabajen',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2017/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Pensionistas de la Seguridad Social',
-          layers: [
-            {
-              id: 34,
-              name: 'gridpenc17_250',
-              title: 'Número de Pensionistas',
-              style: 'stl_pensiones_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            },
-            {
-              id: 35,
-              name: 'gridpenc17_250',
-              title: 'Pensionistas por jubilación',
-              style: 'stl_penc_tipjub',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            },
-            {
-              id: 36,
-              name: 'gridpenc17_250',
-              title: 'Pensionistas por viudedad',
-              style: 'stl_penc_tipviu',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            },
-            {
-              id: 37,
-              name: 'gridpenc17_250',
-              title: 'Pensionistas por jubilación y viudedad',
-              style: 'stl_penc_tipjyv',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            },
-            {
-              id: 38,
-              name: 'gridpenc17_250',
-              title: 'Pensionistas por incapacidad',
-              style: 'stl_penc_tipinc',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            },
-            {
-              id: 39,
-              name: 'gridpenc17_250',
-              title: 'Otro tipo de pensionistas',
-              style: 'stl_penc_tipotr',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2017/wms?'
-            }
-          ]
-        }
-      ]
-    },
-    {
       name: 'Año 2016',
-      layerGroups: [
-        {
-          group: 'Población',
-          layers: [
-            {
-              id: 40,
-              name: 'gridpob16_250',
-              title: 'Número de habitantes',
-              style: 'stl_poblacion_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2016/wms?'
-            },
-            {
-              id: 41,
-              name: 'gridpob16_250',
-              title: 'Nº hab. Menores de 16 años',
-              style: 'stl_poblacion_edad0015',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2016/wms?'
-            },
-            {
-              id: 42,
-              name: 'gridpob16_250',
-              title: 'Nº hab. De 16 a 64 años',
-              style: 'stl_poblacion_edad1664',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2016/wms?'
-            },
-            {
-              id: 43,
-              name: 'gridpob16_250',
-              title: 'Nº hab. Mayores de 64 años',
-              style: 'stl_poblacion_edad65_',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpob2016/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Afiliados a la Seguridad Social',
-          layers: [
-            {
-              id: 44,
-              name: 'gridafil16_250',
-              title: 'Afiliados a la Seguridad Social',
-              style: 'stl_segsoc_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2016/wms?'
-            },
-            {
-              id: 45,
-              name: 'gridafil16_250',
-              title: 'Afiliados por cuenta propia',
-              style: 'stl_segsoc_rellabprop',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2016/wms?'
-            },
-            {
-              id: 46,
-              name: 'gridafil16_250',
-              title: 'Afiliados por cuenta ajena',
-              style: 'stl_segsoc_rellabajen',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridafil2016/wms?'
-            }
-          ]
-        },
-        {
-          group: 'Pensionistas de la Seguridad Social',
-          layers: [
-            {
-              id: 47,
-              name: 'gridpenc16_250',
-              title: 'Número de Pensionistas',
-              style: 'stl_pensiones_total',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            },
-            {
-              id: 48,
-              name: 'gridpenc16_250',
-              title: 'Pensionistas por jubilación',
-              style: 'stl_penc_tipjub',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            },
-            {
-              id: 49,
-              name: 'gridpenc16_250',
-              title: 'Pensionistas por viudedad',
-              style: 'stl_penc_tipviu',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            },
-            {
-              id: 50,
-              name: 'gridpenc16_250',
-              title: 'Pensionistas por jubilación y viudedad',
-              style: 'stl_penc_tipjyv',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            },
-            {
-              id: 51,
-              name: 'gridpenc16_250',
-              title: 'Pensionistas por incapacidad',
-              style: 'stl_penc_tipinc',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            },
-            {
-              id: 52,
-              name: 'gridpenc16_250',
-              title: 'Otro tipo de pensionistas',
-              style: 'stl_penc_tipotr',
-              url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridpenc2016/wms?'
-            }
-          ]
-        }
+      layers: [
+        ortofoto2016_color,
+        ortofoto2016_pancromatica,
+        ortofoto2016_infrarrojo
+      ]
+    },
+    {
+      name: 'Año 2013',
+      layers: [
+        ortofoto2013_color
+      ]
+    },
+    {
+      name: 'Año 2011',
+      layers: [
+        ortofoto2011_color
+      ]
+    },
+    {
+      name: 'Año 2009',
+      layers: [
+        ortofoto2009_color
+      ]
+    },
+    {
+      name: 'Año 2007',
+      layers: [
+        ortofoto2007_color
+      ]
+    },
+    {
+      name: 'Año 2004',
+      layers: [
+        ortofoto2004_color
+      ]
+    },
+    {
+      name: 'Año 2001',
+      layers: [
+        ortofoto2001_pancromatica
+      ]
+    },
+    {
+      name: 'Año 1998',
+      layer: [
+        ortofoto1998_color
+      ]
+    },
+    {
+      name: 'Año 1956',
+      layers: [
+        ortofoto1956_pancromatica
       ]
     }
   ]
 }
 
 
-const mp = new Inputselectaddlayer(configGridPoblacion);
+const mp = new Inputselectaddlayer(configOrtofotografias2);
 
 map.addPlugin(mp);
 
@@ -1080,7 +664,7 @@ mp.on(M.evt.ADDED_TO_MAP, () => {
   console.log('se cargo el plugin');
 })
 
-mp.on(M.evt.ADDED_WMS, () => {
+mp.on(M.evt.LOAD, () => {
   console.log('se cargo una capa');
   console.log(mp.getLayer().name)
 })
@@ -1088,4 +672,4 @@ mp.on(M.evt.ADDED_WMS, () => {
 
 ## Video Demo
 
-Para comprobar el funcionamiento de este plugin se puede descargar el [Video](https://github.com/emiliopardo/inputselectaddlayer/blob/master/docs/video/inputselectaddlayer.webm?raw=true) el cual contempla la configuración y carga del plugin con diferentes geosearch
+Para comprobar el funcionamiento de este plugin se puede descargar el [Video](https://github.com/emiliopardo/inputselectaddlayer/blob/master/docs/video/inputselectaddlayer.webm?raw=true) el cual contempla la configuración y carga del plugin.
