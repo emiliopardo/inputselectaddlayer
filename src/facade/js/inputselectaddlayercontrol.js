@@ -235,31 +235,41 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
-      let name = value.split('*')[0]
-      let style = value.split('*')[1]
-      let find = false;
-      this.map_.removeLayers(this.layer);
-      do {
-        for (let i = 0; i < this.layerList.length; i++) {
-          if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
+    let name = value.split('*')[0]
+    let style = value.split('*')[1]
+    let find = false;
+    this.map_.removeLayers(this.layer);
+
+    do {
+      for (let i = 0; i < this.layerList.length; i++) {
+        if (this.layerList[i].options.styles) {
+          if (this.layerList[i].name == name && this.layerList[i].options.styles == style) {
             this.layer = this.layerList[i]
             find = true;
-          }else if(this.layerList[i].name == name){
+          }
+        } else {
+          if (this.layerList[i].name == name) {
             this.layer = this.layerList[i]
             find = true;
           }
         }
-      } while (!find);
-      this.map_.addLayers([this.layer]);
-      this.layer.setOpacity(0.9);
-      this.layer.displayInLayerSwitcher = true;
-
-      if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
-        this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
       }
+    } while (!find);
 
-      this.layer.on(M.evt.LOAD, () => {
-        this.fire(M.evt.LOAD)
-      })
+    this.map_.addLayers([this.layer]);
+    this.layer.setOpacity(0.9);
+    this.layer.displayInLayerSwitcher = true;
+
+    console.log(this.layerList)
+    console.log(this.layer.options.styles)
+    console.log(value)
+
+    if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
+      this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
+    }
+
+    this.layer.on(M.evt.LOAD, () => {
+      this.fire(M.evt.LOAD)
+    })
   }
 }
