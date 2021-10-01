@@ -260,10 +260,6 @@ export default class InputselectaddlayerControl extends M.Control {
     this.layer.setOpacity(0.9);
     this.layer.displayInLayerSwitcher = true;
 
-    console.log(this.layerList)
-    console.log(this.layer.options.styles)
-    console.log(value)
-
     if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
       this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
     }
