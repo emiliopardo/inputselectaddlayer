@@ -2309,7 +2309,7 @@ const configISEEquipamientos1 = {
       ]
     },
     {
-      name: 'Equipammientos',
+      name: 'Equipamientos',
       layerGroups: [
         {
           group: 'Centros y equipamientos',
@@ -2654,7 +2654,7 @@ const configISEEquipamientos4 = {
 
 /* Select Anidado con Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias1);
-//const mp = new Inputselectaddlayer(configISEEquipamientos1);
+const mp = new Inputselectaddlayer(configISEEquipamientos1);
 /* Select Anidado y sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias2);
 //const mp = new Inputselectaddlayer(configISEEquipamientos2);
@@ -2664,9 +2664,12 @@ const configISEEquipamientos4 = {
 /* Select no Anidado sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias4);
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
-const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
+//const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
 //const mp = new Inputselectaddlayer(configISEEquipamientos4);
 
+const simpleLegend = new M.plugin.Simplelegend()
+
+map.addPlugin(simpleLegend)
 
 map.addPlugin(mp);
 
@@ -2677,7 +2680,6 @@ mp.on(M.evt.ADDED_TO_MAP, () => {
 
 mp.on(M.evt.LOAD, () => {
   console.log('se cargo una capa');
-  //console.log(mp.getLayer().name)
 })
 
 
