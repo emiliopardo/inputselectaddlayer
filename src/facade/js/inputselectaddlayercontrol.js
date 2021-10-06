@@ -263,16 +263,9 @@ export default class InputselectaddlayerControl extends M.Control {
     if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
       this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
     }
-
-    console.log(this.map_.getPlugins());
-
     if (this.map_.getControls({ 'name': 'Simplelegend' }).length > 0) {
-      console.log(this.map_.getControls({ 'name': 'Simplelegend' })[0]);
-
       let legend = this.map_.getControls({ 'name': 'Simplelegend' })[0];
-
       legend.updateLegend(this.layer)
-
     }
 
 
