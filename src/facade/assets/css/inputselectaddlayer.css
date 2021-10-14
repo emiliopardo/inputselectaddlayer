@@ -19,7 +19,7 @@ div.m-areas
   background-color: transparent !important;
   box-shadow: none !important;
   position:absolute !important;
-  margin-right:30vw;
+  margin-right:30vw !important;
   margin-top: 10px;
 }
 
