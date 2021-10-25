@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /**
  * @module M/plugin/Inputselectaddlayer
  */
@@ -58,10 +57,8 @@ export default class Inputselectaddlayer extends M.Plugin {
     // panel para agregar control - no obligatorio
     this.panel_ = new M.ui.Panel('panelInputselectaddlayer', {
       className: 'm-selector-panel',
-      //collapsible: true,
       position: M.ui.position.TR,
       collapsedButtonClass: 'g-cartografia-capas2',
-      tooltip: 'Añadir capa'
     });
     this.panel_.addControls(this.controls_);
     map.addPanels(this.panel_);
