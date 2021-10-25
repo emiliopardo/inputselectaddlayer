@@ -3,8 +3,15 @@
   <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
     <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
       {{title}}
+      {{#if image}}
+      <img class="m-inputselectaddlayer-content-image"
+      src="{{image}}"
+      alt="{{image_alt}}"
+      title="{{image_alt}}">
+      {{/if}}
     </div>
     {{/if}}
+    
     <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
       <select id="layerSelector" class="m-inputselectaddlayer-select" name="select">
         <option value=""> --- Selecciona una capa --- </option>

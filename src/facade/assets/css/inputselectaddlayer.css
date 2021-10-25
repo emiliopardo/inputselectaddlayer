@@ -19,7 +19,8 @@ div.m-areas
   background-color: transparent !important;
   box-shadow: none !important;
   position:absolute !important;
-  margin-right:30vw !important;
+  margin-right:25vw !important;
+  /* margin-left:40 !important; */
   margin-top: 10px;
 }
 
@@ -28,19 +29,18 @@ div.m-areas
   height: 0px;
 }
 
-#inputselectaddlayer{
-  position: absolute !important;
-  /* cursor: move !important; */
+.m-inputselectaddlayer-content-image{
+  display: inline;
+  vertical-align: -10px !important
 }
 
 #m-inputselectaddlayer-content{
   border-radius: 10px;
   background-color: #f4f4f4 !important;
-  /* min-height: 150px; */
 }
 
 .m-areas > div.m-area > div.m-panel.m-selector-panel.opened > div.m-panel-controls {
-	width: 35vw !important;
+	width: 50vw !important;
   border-radius: 10px !important;
 }
 
@@ -48,7 +48,6 @@ div.m-areas
 .m-inputselectaddlayer-content-title {
   border-radius: 10px;
   vertical-align: middle;
-  /* min-height: 32px; */
   padding: 5px 5px 5px 5px;
   width: 100%;
   font-size: 13px;
@@ -63,15 +62,14 @@ div.m-areas
   box-shadow: 0 1px 2px rgba(0,0,0,.3);
   background-color: #f4f4f4;
   border-radius: 10px;
-  /* background-color: #FFFFFF; */
-  /* margin: 10px 10px 10px 10px; */
-
+  padding-right: 10px !important;
 }
 
 div.m-control.m-container.m-inputselectaddlayer {
   border-radius: 10px !important;
   background-color: #f4f4f4 !important;
-  width: 35vw !important;
+  width: auto !important;
+  margin: auto !important;
 }
 
 select.m-inputselectaddlayer-select {
@@ -94,9 +92,9 @@ select.m-inputselectaddlayer-select:disabled{
 }
 
 .select-group{
-  width: 30% !important;
+  width: 22vw!important;
 }
 
 .select-layer{
-    width: 65% !important;
+    width: 22vw!important;
 }
