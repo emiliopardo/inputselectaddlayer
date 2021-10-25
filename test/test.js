@@ -2178,7 +2178,7 @@ organismos.setStyle(clusterStyleOrganismos);
 
 /* Select Anidado con Option Group**/
 const configOrtofotografias1 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   group: true,
   data: [
@@ -2287,7 +2287,9 @@ const configOrtofotografias1 = {
 }
 
 const configISEEquipamientos1 = {
-  title: 'Inventario de Sedes y Eqipamientos',
+  image:"https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png",
+  image_alt:"Andalucía se mueve con Europa",
+  title: 'Inventario de Sedes y Equipamientos',
   label: 'ISE',
   group: true,
   data: [
@@ -2337,7 +2339,7 @@ const configISEEquipamientos1 = {
 }
 /* Select Anidado y sin Option Group**/
 const configOrtofotografias2 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   group: false,
   data: [
@@ -2441,7 +2443,7 @@ const configISEEquipamientos2 = {
 }
 /* Select no Anidado con Option Group**/
 const configOrtofotografias3 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   group: true,
   data:
@@ -2552,7 +2554,9 @@ const configISEEquipamientos3 = {
 }
 /* Select no Anidado sin Option Group**/
 const configOrtofotografias4 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
+  image:"https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png",
+  image_alt:"Andalucía se mueve con Europa",  
   label: 'Año',
   group: false,
   data:
@@ -2653,8 +2657,8 @@ const configISEEquipamientos4 = {
 
 
 /* Select Anidado con Option Group**/
-//const mp = new Inputselectaddlayer(configOrtofotografias1);
-const mp = new Inputselectaddlayer(configISEEquipamientos1);
+const mp = new Inputselectaddlayer(configOrtofotografias1);
+//const mp = new Inputselectaddlayer(configISEEquipamientos1);
 /* Select Anidado y sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias2);
 //const mp = new Inputselectaddlayer(configISEEquipamientos2);
@@ -2665,7 +2669,7 @@ const mp = new Inputselectaddlayer(configISEEquipamientos1);
 //const mp = new Inputselectaddlayer(configOrtofotografias4);
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
 //const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
-//const mp = new Inputselectaddlayer(configISEEquipamientos4);
+// const mp = new Inputselectaddlayer(configISEEquipamientos4);
 
 const simpleLegend = new M.plugin.Simplelegend()
 
