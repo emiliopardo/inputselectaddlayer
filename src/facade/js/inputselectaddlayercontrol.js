@@ -27,6 +27,8 @@ export default class InputselectaddlayerControl extends M.Control {
     const impl = new InputselectaddlayerImplControl();
     super(impl, 'Inputselectaddlayer');
     this.layer = null;
+    this.image = null;
+    this.image_alt=null;
     this.config = config;
     this.checkConfig(this.config);
     this.title = config.title;
@@ -111,6 +113,14 @@ export default class InputselectaddlayerControl extends M.Control {
     if (config.hasOwnProperty('title')) {
       this.title = config.title
     }
+
+    if (config.hasOwnProperty('image')) {
+      this.image = config.image
+    }
+
+    if (config.hasOwnProperty('image_alt')) {
+      this.image_alt = config.image_alt
+    }
     this.layerList = new Array();
     this.groupList = new Array();
     this.data = config.data;
@@ -120,25 +130,25 @@ export default class InputselectaddlayerControl extends M.Control {
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
-      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.templateVars = { vars: { title: this.title, groups: this.groupList ,image: this.image, image_alt: this.image_alt} };
       this.template = templateSelectAnidated;
     } else if (Array.isArray(this.data) & config.group == false) {
       // console.log('es anidado sin optionGroup')
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
-      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.templateVars = { vars: { title: this.title, groups: this.groupList ,image: this.image, image_alt: this.image_alt} };
       this.template = templateSelectAnidated;
     } else if (config.group) {
       // console.log('no anidado con optionGroup')
       this.getLayersFromGroupsLayers(this.data.layerGroups);
-      this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups } };
+      this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups ,image: this.image, image_alt: this.image_alt} };
       this.template = templateSelectOptionGroups;
     } else {
       // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
 
-      this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
+      this.templateVars = { vars: { title: this.title, layers: this.data.layers ,image: this.image, image_alt: this.image_alt} };
       this.template = templateSelect;
     }
 
