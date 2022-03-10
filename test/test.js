@@ -121,9 +121,9 @@ const ortofoto1956_pancromatica = new M.layer.WMS({
 })
 
 
-const direst_transporte_2018 = new M.layer.WMS({
+const direst_transporte_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_transporte_2018',
+  name: 'direst_transporte_2020',
   legend: 'Sector Transporte y almacenamiento',
   transparent: true,
   tiled: true
@@ -132,9 +132,9 @@ const direst_transporte_2018 = new M.layer.WMS({
 })
 
 
-const direst_servicios_2018 = new M.layer.WMS({
+const direst_servicios_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_servicios_2018',
+  name: 'direst_servicios_2020',
   legend: 'Sector Servicios sanitarios, educativos y resto de servicios',
   transparent: true,
   tiled: true
@@ -142,9 +142,9 @@ const direst_servicios_2018 = new M.layer.WMS({
   styles: 'direst_servicios'
 })
 
-const direst_industria_2018 = new M.layer.WMS({
+const direst_industria_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_industria_2018',
+  name: 'direst_industria_2020',
   legend: 'Sector Industria',
   transparent: true,
   tiled: true
@@ -152,9 +152,9 @@ const direst_industria_2018 = new M.layer.WMS({
   styles: 'direst_industria'
 })
 
-const direst_hosteleria_2018 = new M.layer.WMS({
+const direst_hosteleria_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_hosteleria_2018',
+  name: 'direst_hosteleria_2020',
   legend: 'Sector Hostelería',
   transparent: true,
   tiled: true
@@ -162,9 +162,9 @@ const direst_hosteleria_2018 = new M.layer.WMS({
   styles: 'direst_hosteleria'
 })
 
-const direst_energia_2018 = new M.layer.WMS({
+const direst_energia_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_energia_2018',
+  name: 'direst_energia_2020',
   legend: 'Sector Energía, agua y resíduos',
   transparent: true,
   tiled: true
@@ -172,9 +172,9 @@ const direst_energia_2018 = new M.layer.WMS({
   styles: 'direst_energia'
 })
 
-const direst_construccion_2018 = new M.layer.WMS({
+const direst_construccion_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_construccion_2018',
+  name: 'direst_construccion_2020',
   legend: 'Sector Construcción',
   transparent: true,
   tiled: true
@@ -182,9 +182,9 @@ const direst_construccion_2018 = new M.layer.WMS({
   styles: 'direst_construccion'
 })
 
-const direst_comercio_2018 = new M.layer.WMS({
+const direst_comercio_2020 = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/direst/wms?',
-  name: 'direst_comercio_2018',
+  name: 'direst_comercio_2020',
   legend: 'Sector Comercio',
   transparent: true,
   tiled: true
@@ -202,6 +202,9 @@ const viviendas_colectivas = new M.layer.WMS({
   styles: 'stl_c011_viviendas_colectivas'
 })
 
+viviendas_colectivas.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c011_viviendas_colectivas')
+
+
 const viviendas_unifamiliares = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -211,6 +214,8 @@ const viviendas_unifamiliares = new M.layer.WMS({
 }, {
   styles: 'stl_c012_viviendas_unifamiliares'
 })
+
+viviendas_unifamiliares.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c012_viviendas_unifamiliares')
 
 const edificiacion_rural = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -222,6 +227,8 @@ const edificiacion_rural = new M.layer.WMS({
   styles: 'stl_c013_edificiacion_rural'
 })
 
+edificiacion_rural.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c013_edificiacion_rural')
+
 const garages_viviendas = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -231,6 +238,8 @@ const garages_viviendas = new M.layer.WMS({
 }, {
   styles: 'stl_c01G_garages_viviendas'
 })
+
+garages_viviendas.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c01G_garages_viviendas')
 
 const otros_garajes = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -242,6 +251,8 @@ const otros_garajes = new M.layer.WMS({
   styles: 'stl_c022_otros_garajes'
 })
 
+otros_garajes.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c022_otros_garajes')
+
 const industrial = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -251,6 +262,8 @@ const industrial = new M.layer.WMS({
 }, {
   styles: 'stl_c02_industrial'
 })
+
+industrial.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c02_industrial')
 
 const oficinas = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -262,6 +275,8 @@ const oficinas = new M.layer.WMS({
   styles: 'stl_c03_oficinas'
 })
 
+oficinas.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c03_oficinas')
+
 const comercio = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -271,6 +286,8 @@ const comercio = new M.layer.WMS({
 }, {
   styles: 'stl_c04_comercio'
 })
+
+comercio.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c04_comercio')
 
 const deporte = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -282,6 +299,8 @@ const deporte = new M.layer.WMS({
   styles: 'stl_c05_Deportes'
 })
 
+deporte.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c05_Deportes')
+
 const piscinas = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -291,6 +310,8 @@ const piscinas = new M.layer.WMS({
 }, {
   styles: 'stl_c05P_piscinas'
 })
+
+piscinas.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c05P_piscinas')
 
 const espectaculos = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -302,6 +323,8 @@ const espectaculos = new M.layer.WMS({
   styles: 'stl_c06_espectaculos'
 })
 
+espectaculos.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c06_espectaculos')
+
 const hosteleria_ocio = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -311,6 +334,8 @@ const hosteleria_ocio = new M.layer.WMS({
 }, {
   styles: 'stl_c07_hosteleria_ocio'
 })
+
+hosteleria_ocio.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c07_hosteleria_ocio')
 
 const sanitarios_beneficos = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -322,6 +347,8 @@ const sanitarios_beneficos = new M.layer.WMS({
   styles: 'stl_c08_sanitarios_beneficos'
 })
 
+sanitarios_beneficos.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c08_sanitarios_beneficos')
+
 const culturales = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -331,6 +358,8 @@ const culturales = new M.layer.WMS({
 }, {
   styles: 'stl_c09_culturales'
 })
+
+culturales.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c09_culturales')
 
 const religiosos = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -342,6 +371,8 @@ const religiosos = new M.layer.WMS({
   styles: 'stl_c093_religioso'
 })
 
+religiosos.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c093_religioso')
+
 const singulares = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
   name: 'gridcattp_250',
@@ -351,6 +382,8 @@ const singulares = new M.layer.WMS({
 }, {
   styles: 'stl_c10_singulares'
 })
+
+singulares.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c10_singulares')
 
 const campo_golf = new M.layer.WMS({
   url: 'http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?',
@@ -362,12 +395,11 @@ const campo_golf = new M.layer.WMS({
   styles: 'stl_c1034_golf'
 })
 
-/* FIN DEFINICIÓN LAYERS RASTER*/
+campo_golf.setLegendURL('http://www.juntadeandalucia.es/institutodeestadisticaycartografia/geoserver-ieca/gridcattp/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetLegendGraphic&LAYER=gridcattp_250&FORMAT=image%2Fpng&EXCEPTIONS=image%2Fpng&style=stl_c1034_golf')
 
-/* INICIO DEFINICIÓN LAYERS VECTOR*/
 
 //Parámetros Opcionales Cluster
-let vendorParameters = {
+const vendorParameters = {
   distanceSelectFeatures: 25,
   convexHullStyle: {
     fill: {
@@ -384,9 +416,8 @@ let vendorParameters = {
 
 //Capa ise:Nuevas_Tecnologias
 
-let tecnologia = new M.layer.WFS({
-  name: "Nuevas_Tecnologias",
-
+const tecnologia = new M.layer.WFS({
+  name: "nuevas_tecnologias",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Nuevas tecnologías",
@@ -402,13 +433,13 @@ let tecnologia = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let tecnologiaRedAndaluzaDePosicionamiento = new M.style.Point({
+const tecnologiaRedAndaluzaDePosicionamiento = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Tecnologia/rap.png'
   }
 });
 
-let tecnologiaGuadalinfo = new M.style.Point({
+const tecnologiaGuadalinfo = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Tecnologia/guadalinfo.png'
   }
@@ -417,14 +448,14 @@ let tecnologiaGuadalinfo = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaTecnologia = new M.style.Category("Nivel2", {
+const categoriaTecnologia = new M.style.Category("Nivel2", {
 
   "Red andaluza de posicionamiento": tecnologiaRedAndaluzaDePosicionamiento,
   "Centros Guadalinfo": tecnologiaGuadalinfo
 });
 
 //Simbología Cluster
-let clusterOptionsTecnologia = {
+const clusterOptionsTecnologia = {
   ranges: [{
     min: 2,
     max: 100,
@@ -453,10 +484,10 @@ let clusterOptionsTecnologia = {
 };
 
 //Creación del estilo Cluster
-let clusterStyleTecnologia = new M.style.Cluster(clusterOptionsTecnologia, vendorParameters);
+const clusterStyconstecnologia = new M.style.Cluster(clusterOptionsTecnologia, vendorParameters);
 
 //Creación del estilo composite
-let compositeTecnologia = categoriaTecnologia.add(clusterStyleTecnologia);
+const compositeTecnologia = categoriaTecnologia.add(clusterStyconstecnologia);
 
 //asignación del estilo final
 tecnologia.setStyle(compositeTecnologia);
@@ -465,8 +496,8 @@ tecnologia.setStyle(compositeTecnologia);
 
 //Capa ise:Agricultura
 
-let agricultura = new M.layer.WFS({
-  name: "Agricultura_Ganaderia_Pesca",
+const agricultura = new M.layer.WFS({
+  name: "agricultura_ganaderia_pesca",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Agricultura, ganadería y pesca",
@@ -482,18 +513,18 @@ let agricultura = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let agriculturaOCA = new M.style.Point({
+const agriculturaOCA = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Agricultura/oca.png'
   }
 });
 
-let agriculturaAgroclimatica = new M.style.Point({
+const agriculturaAgroclimatica = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Agricultura/agroclimatica.png'
   }
 });
-let agriculturaGrupodr = new M.style.Point({
+const agriculturaGrupodr = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Agricultura/9_61_gdr.png'
   }
@@ -501,14 +532,14 @@ let agriculturaGrupodr = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaAgricultura = new M.style.Category("Nivel2", {
+const categoriaAgricultura = new M.style.Category("Nivel2", {
   "Oficinas comarcales y locales agrarias": agriculturaOCA,
   "Información agroclimática": agriculturaAgroclimatica,
   "Grupos de Desarrollo Rural": agriculturaGrupodr
 });
 
 //Simbología Cluster
-let clusterOptionsAgricultura = {
+const clusterOptionsAgricultura = {
   ranges: [{
     min: 2,
     max: 100,
@@ -537,10 +568,10 @@ let clusterOptionsAgricultura = {
 };
 
 //Creación del estilo Cluster
-let clusterStyleAgricultura = new M.style.Cluster(clusterOptionsAgricultura, vendorParameters);
+const clusterStyleAgricultura = new M.style.Cluster(clusterOptionsAgricultura, vendorParameters);
 
 //Creación del estilo composite
-let compositeAgricultura = categoriaAgricultura.add(clusterStyleAgricultura);
+const compositeAgricultura = categoriaAgricultura.add(clusterStyleAgricultura);
 
 //asignación del estilo final
 agricultura.setStyle(compositeAgricultura);
@@ -548,8 +579,8 @@ agricultura.setStyle(compositeAgricultura);
 
 //Capa ise:Cultura
 
-let cultura = new M.layer.WFS({
-  name: "Cultura",
+const cultura = new M.layer.WFS({
+  name: "cultura",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Cultura",
@@ -566,33 +597,33 @@ let cultura = new M.layer.WFS({
 
 
 
-//Asignación de Iconos
+//AsignaciÃ³n de Iconos
 
 let culturaArtesEscenicas = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/artes.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/artes.png'
   }
 });
 
 let culturaLetras = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/letras.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/letras.png'
   }
 });
 
 let culturaOtrosCentros = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/otros_centros.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/otros_centros.png'
   }
 });
 
 let culturaPatrimonio = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/patrimonio_c.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Cultura/patrimonio_c.png'
   }
 });
 
-//Simbología categorizada
+//SimbologÃ­a categorizada
 
 let categoriaCultura = new M.style.Category("Nivel2", {
   "Artes escénicas": culturaArtesEscenicas,
@@ -602,7 +633,7 @@ let categoriaCultura = new M.style.Category("Nivel2", {
 });
 
 //Simbología Cluster
-let clusterOptionsCultura = {
+const clusterOptionsCultura = {
   ranges: [{
     min: 2,
     max: 100,
@@ -631,10 +662,10 @@ let clusterOptionsCultura = {
 };
 
 //Creación del estilo Cluster
-let clusterStyleCultura = new M.style.Cluster(clusterOptionsCultura, vendorParameters);
+const clusterStyleCultura = new M.style.Cluster(clusterOptionsCultura, vendorParameters);
 
 //Creación del estilo composite
-let compositeCultura = categoriaCultura.add(clusterStyleCultura);
+const compositeCultura = categoriaCultura.add(clusterStyleCultura);
 
 //asignación del estilo final
 cultura.setStyle(compositeCultura);
@@ -642,8 +673,8 @@ cultura.setStyle(compositeCultura);
 
 //Capa ise:EmpresasYprofesionales
 
-let empresa = new M.layer.WFS({
-  name: "EmpresasYprofesionales",
+const empresa = new M.layer.WFS({
+  name: "empresas_profesionales",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Empresas y profesionales",
@@ -659,7 +690,7 @@ let empresa = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let empresaEmprendimiento = new M.style.Point({
+const empresaEmprendimiento = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Empresa/emprendedores.png'
 
@@ -668,13 +699,13 @@ let empresaEmprendimiento = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaEmpresa = new M.style.Category("Nivel2", {
+const categoriaEmpresa = new M.style.Category("Nivel2", {
 
   "Emprendimiento": empresaEmprendimiento
 });
 
 //Simbología Cluster
-let clusterOptionsEmpresa = {
+const clusterOptionsEmpresa = {
   ranges: [{
     min: 2,
     max: 100,
@@ -703,10 +734,10 @@ let clusterOptionsEmpresa = {
 };
 
 //Creación del estilo Cluster
-let clusterStyleEmpresa = new M.style.Cluster(clusterOptionsEmpresa, vendorParameters);
+const clusterStyleEmpresa = new M.style.Cluster(clusterOptionsEmpresa, vendorParameters);
 
 //Creación del estilo composite
-let compositeEmpresa = categoriaEmpresa.add(clusterStyleEmpresa);
+const compositeEmpresa = categoriaEmpresa.add(clusterStyleEmpresa);
 
 //asignación del estilo final
 empresa.setStyle(compositeEmpresa);
@@ -714,10 +745,10 @@ empresa.setStyle(compositeEmpresa);
 
 //Capa ise:Educar 
 
-let educacion = new M.layer.WFS({
+const educacion = new M.layer.WFS({
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Estudiar",
+  name: "estudiar",
   legend: "Estudiar",
   geometry: 'POINT',
   extract: true,
@@ -732,7 +763,7 @@ let educacion = new M.layer.WFS({
   }
 );
 
-let estiloEducacion = new M.style.Point({
+const estiloEducacion = new M.style.Point({
   radius: 4,
   fill: {
     color: '#B84949',
@@ -743,68 +774,68 @@ let estiloEducacion = new M.style.Point({
   }
 });
 
-let educacionCentrosEspecificos = new M.style.Point({
+const educacionCentrosEspecificos = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/centros_especificos.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/centros_especificos.png'
   }
 });
 
-let educacionInfantil = new M.style.Point({
+const educacionInfantil = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/educacion.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/educacion.png'
   }
 });
 
-let educacionDistancia = new M.style.Point({
+const educacionDistancia = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/e_distancia.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/e_distancia.png'
   }
 });
 
-let educacionArtisticas = new M.style.Point({
+const educacionArtisticas = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/e_artisticas.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/e_artisticas.png'
   }
 });
 
-let educacionIdiomas = new M.style.Point({
+const educacionIdiomas = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/escuela_oficial.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/escuela_oficial.png'
   }
 });
 
-let educacionPermanente = new M.style.Point({
+const educacionPermanente = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/educacion_permanente.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/educacion_permanente.png'
   }
 });
 
-let educacionFP = new M.style.Point({
+const educacionFP = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/formacion.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/formacion.png'
   }
 });
 
-let educacionUniversidades = new M.style.Point({
+const educacionUniversidades = new M.style.Point({
   icon: {
-    src: ' https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/universidades.png'
+    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Educacion/universidades.png'
   }
 });
 
 //Simbología categorizada
 
-let categoriaEducacion = new M.style.Category("Nivel2", {
+const categoriaEducacion = new M.style.Category("Nivel2", {
   "Centros específicos de educación especial": educacionCentrosEspecificos,
   "Educación infantil, primaria y/o secundaria": educacionInfantil,
-  "EnseÃ±anza a distancia": educacionDistancia,
-  "EnseÃ±anzas artísticas, deportivas": educacionArtisticas,
+  "Enseñanza a distancia": educacionDistancia,
+  "Enseñanzas artísticas, deportivas": educacionArtisticas,
   "Escuela oficial de idiomas": educacionIdiomas,
   "Formación profesional": educacionFP,
   "Secciones y centros de educación permanente": educacionPermanente,
   "Universidades y facultades": educacionUniversidades
 });
 
-let clusterOptionsEducacion = {
+const clusterOptionsEducacion = {
   ranges: [{
     min: 2,
     max: 999,
@@ -832,14 +863,14 @@ let clusterOptionsEducacion = {
   }
 };
 
-let clusterStyleEducacion = new M.style.Cluster(clusterOptionsEducacion, vendorParameters);
+const clusterStyleEducacion = new M.style.Cluster(clusterOptionsEducacion, vendorParameters);
 
-let compositeEducacion = categoriaEducacion.add(clusterStyleEducacion);
+const compositeEducacion = categoriaEducacion.add(clusterStyleEducacion);
 
 educacion.setStyle(compositeEducacion);
 
-let empleo = new M.layer.WFS({
-  name: "Empleo",
+const empleo = new M.layer.WFS({
+  name: "empleo",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Empleo",
@@ -853,7 +884,7 @@ let empleo = new M.layer.WFS({
   }
 });
 
-let estiloEmpleo = new M.style.Point({
+const estiloEmpleo = new M.style.Point({
   radius: 4,
   fill: {
     color: '#d06d81',
@@ -866,7 +897,7 @@ let estiloEmpleo = new M.style.Point({
 
 //Asignación de Iconos
 
-let empleoRelacionesLaborales = new M.style.Point({
+const empleoRelacionesLaborales = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Empleo/relaciones.png'
   }
@@ -875,13 +906,13 @@ let empleoRelacionesLaborales = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaEmpleo = new M.style.Category("Nivel2", {
+const categoriaEmpleo = new M.style.Category("Nivel2", {
   "Relaciones laborales": empleoRelacionesLaborales
 });
 
 
 
-let clusterOptionsEmpleo = {
+const clusterOptionsEmpleo = {
   ranges: [{
     min: 2,
     max: 100,
@@ -909,16 +940,15 @@ let clusterOptionsEmpleo = {
   }
 };
 
-let clusterStyleEmpleo = new M.style.Cluster(clusterOptionsEmpleo, vendorParameters);
+const clusterStyleEmpleo = new M.style.Cluster(clusterOptionsEmpleo, vendorParameters);
 
-let compositeEmpleo = categoriaEmpleo.add(clusterStyleEmpleo);
+const compositeEmpleo = categoriaEmpleo.add(clusterStyleEmpleo);
 
 empleo.setStyle(compositeEmpleo);
 
 
-let industria = new M.layer.WFS({
-  name: "Industria_Minas",
-
+const industria = new M.layer.WFS({
+  name: "industria_minas",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Industria y minas",
@@ -932,7 +962,7 @@ let industria = new M.layer.WFS({
   }
 });
 
-let estiloIndustria = new M.style.Point({
+const estiloIndustria = new M.style.Point({
   radius: 4,
   fill: {
     color: '#0468ea',
@@ -945,7 +975,7 @@ let estiloIndustria = new M.style.Point({
 
 //Asignación de Iconos
 
-let industriaITV = new M.style.Point({
+const industriaITV = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Industria/itv.png'
   }
@@ -954,13 +984,13 @@ let industriaITV = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaIndustria = new M.style.Category("Nivel2", {
+const categoriaIndustria = new M.style.Category("Nivel2", {
   "ITV": industriaITV
 });
 
 
 
-let clusterOptionsIndustria = {
+const clusterOptionsIndustria = {
   ranges: [{
     min: 2,
     max: 100,
@@ -988,18 +1018,17 @@ let clusterOptionsIndustria = {
   }
 };
 
-let clusterStyleIndustria = new M.style.Cluster(clusterOptionsIndustria, vendorParameters);
+const clusterStyleIndustria = new M.style.Cluster(clusterOptionsIndustria, vendorParameters);
 
-let compositeIndustria = categoriaIndustria.add(clusterStyleIndustria);
+const compositeIndustria = categoriaIndustria.add(clusterStyleIndustria);
 
 industria.setStyle(compositeIndustria);
 
 
 //Capa ise:Investigación e Innovacion
 
-let investigacion = new M.layer.WFS({
-  name: "Investigacion_Innovacion",
-
+const investigacion = new M.layer.WFS({
+  name: "investigacion_innovacion",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Investigación e innovación",
@@ -1016,25 +1045,25 @@ let investigacion = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let investigacionInvestigacion = new M.style.Point({
+const investigacionInvestigacion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Investigacion/investigacion.png'
   }
 });
 
-let investigacionLaboratorio = new M.style.Point({
+const investigacionLaboratorio = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Investigacion/laboratorio.png'
   }
 });
 
-let investigacionInnovacion = new M.style.Point({
+const investigacionInnovacion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Investigacion/innovacion.png'
   }
 });
 
-let investigacionConservacion = new M.style.Point({
+const investigacionConservacion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Investigacion/conservacion.png'
   }
@@ -1043,7 +1072,7 @@ let investigacionConservacion = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaInvestigacion = new M.style.Category("Nivel2", {
+const categoriaInvestigacion = new M.style.Category("Nivel2", {
   "Conservación e investigación medio ambiental": investigacionConservacion,
   "Investigación y desarrollo": investigacionInvestigacion,
   "Innovación": investigacionInnovacion,
@@ -1051,7 +1080,7 @@ let categoriaInvestigacion = new M.style.Category("Nivel2", {
 });
 
 //Simbología Cluster
-let clusterOptionsInvestigacion = {
+const clusterOptionsInvestigacion = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1080,18 +1109,18 @@ let clusterOptionsInvestigacion = {
 };
 
 //Creación del estilo Cluster
-let clusterStyleInvestigacion = new M.style.Cluster(clusterOptionsInvestigacion, vendorParameters);
+const clusterStyleInvestigacion = new M.style.Cluster(clusterOptionsInvestigacion, vendorParameters);
 
 //Creación del estilo composite
-let compositeInvestigacion = categoriaInvestigacion.add(clusterStyleInvestigacion);
+const compositeInvestigacion = categoriaInvestigacion.add(clusterStyleInvestigacion);
 
 //asignación del estilo final
 investigacion.setStyle(compositeInvestigacion);
 
-let justicia = new M.layer.WFS({
+const justicia = new M.layer.WFS({
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "JusticiaSeguridadEmergencias",
+  name: "justicia_seguridad_emergencias",
   legend: "Justicia, seguridad y emergencias",
   cql: "Dependencia<>'Ayuntamiento' AND Dependencia<>'Ministerio del Interior' AND Tipo<>'Bomberos'",
   geometry: 'POINT',
@@ -1105,7 +1134,7 @@ let justicia = new M.layer.WFS({
 });
 
 
-let estiloJusticia = new M.style.Point({
+const estiloJusticia = new M.style.Point({
   radius: 4,
   fill: {
     color: '#d6b25e',
@@ -1117,19 +1146,19 @@ let estiloJusticia = new M.style.Point({
 });
 
 //Asignación de Iconos
-let justiciaIncendios = new M.style.Point({
+const justiciaIncendios = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Justicia/control.png'
   }
 });
 
-let justiciaJuzgadosTribunales = new M.style.Point({
+const justiciaJuzgadosTribunales = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Justicia/juzgados.png'
   }
 });
 
-let justiciaOrdenPublicoEmergencias = new M.style.Point({
+const justiciaOrdenPublicoEmergencias = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Justicia/orden_publico.png'
   }
@@ -1137,13 +1166,13 @@ let justiciaOrdenPublicoEmergencias = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaJusticia = new M.style.Category("Nivel2", {
+const categoriaJusticia = new M.style.Category("Nivel2", {
   "Control y vigilancia de incendios": justiciaIncendios,
   "Juzgados y tribunales": justiciaJuzgadosTribunales,
   "Orden público y emergencias": justiciaOrdenPublicoEmergencias
 });
 
-let clusterOptionsJusticia = {
+const clusterOptionsJusticia = {
   ranges: [{
     min: 2,
     max: 500,
@@ -1171,16 +1200,15 @@ let clusterOptionsJusticia = {
   }
 };
 
-let clusterStyleJusticia = new M.style.Cluster(clusterOptionsJusticia, vendorParameters);
+const clusterStyleJusticia = new M.style.Cluster(clusterOptionsJusticia, vendorParameters);
 
-let compositeJusticia = categoriaJusticia.add(clusterStyleJusticia);
+const compositeJusticia = categoriaJusticia.add(clusterStyleJusticia);
 
 justicia.setStyle(compositeJusticia);
 
 
-let medioAmbiente = new M.layer.WFS({
-  name: "MedioAmbiente",
-
+const medioAmbiente = new M.layer.WFS({
+  name: "medio_ambiente",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Medio ambiente",
@@ -1197,24 +1225,24 @@ let medioAmbiente = new M.layer.WFS({
 //Asignación de Iconos
 
 
-let medioAmbienteEducacionAmbientalCentrosInterpretacion = new M.style.Point({
+const medioAmbienteEducacionAmbientalCentrosInterpretacion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/MedioAmbiente/educacion.png'
   }
 });
 
-let medioAmbienteMedioMarino = new M.style.Point({
+const medioAmbienteMedioMarino = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/MedioAmbiente/medio_marino.png'
   }
 });
 
-let medioAmbienteRutasSenderos = new M.style.Point({
+const medioAmbienteRutasSenderos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/MedioAmbiente/rutas.png'
   }
 });
-let medioAmbienteGestionResiduos = new M.style.Point({
+const medioAmbienteGestionResiduos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/MedioAmbiente/7_59_residuos.png'
   }
@@ -1222,7 +1250,7 @@ let medioAmbienteGestionResiduos = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaMedioAmbiente = new M.style.Category("Nivel2", {
+const categoriaMedioAmbiente = new M.style.Category("Nivel2", {
   "Educación ambiental y centro de interpretación": medioAmbienteEducacionAmbientalCentrosInterpretacion,
   "Medio marino": medioAmbienteMedioMarino,
   "Rutas y senderos": medioAmbienteRutasSenderos,
@@ -1231,7 +1259,7 @@ let categoriaMedioAmbiente = new M.style.Category("Nivel2", {
 
 
 
-let clusterOptionsMedioAmbiente = {
+const clusterOptionsMedioAmbiente = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1259,15 +1287,14 @@ let clusterOptionsMedioAmbiente = {
   }
 };
 
-let clusterStyleMedioAmbiente = new M.style.Cluster(clusterOptionsMedioAmbiente, vendorParameters);
+const clusterStyleMedioAmbiente = new M.style.Cluster(clusterOptionsMedioAmbiente, vendorParameters);
 
-let compositeMedioAmbiente = categoriaMedioAmbiente.add(clusterStyleMedioAmbiente);
+const compositeMedioAmbiente = categoriaMedioAmbiente.add(clusterStyleMedioAmbiente);
 
 medioAmbiente.setStyle(compositeMedioAmbiente);
 
-let otros = new M.layer.WFS({
-  name: "Otros",
-
+const otros = new M.layer.WFS({
+  name: "otros",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Otros",
@@ -1281,7 +1308,7 @@ let otros = new M.layer.WFS({
   }
 });
 
-let estiloOtros = new M.style.Point({
+const estiloOtros = new M.style.Point({
   radius: 4,
   fill: {
     color: '#612408',
@@ -1294,13 +1321,13 @@ let estiloOtros = new M.style.Point({
 
 //Asignación de Iconos
 
-let otrosInstalaciones = new M.style.Point({
+const otrosInstalaciones = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Otros/instalaciones.png'
   }
 });
 
-let otrosOficinas = new M.style.Point({
+const otrosOficinas = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Otros/oficinas.png'
   }
@@ -1308,13 +1335,13 @@ let otrosOficinas = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaOtros = new M.style.Category("Nivel2", {
+const categoriaOtros = new M.style.Category("Nivel2", {
   "Instalaciones auxiliares": otrosInstalaciones,
   "Oficinas ": otrosOficinas
 });
 
 
-let clusterOptionsOtros = {
+const clusterOptionsOtros = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1342,15 +1369,14 @@ let clusterOptionsOtros = {
   }
 };
 
-let clusterStyleOtros = new M.style.Cluster(clusterOptionsOtros, vendorParameters);
+const clusterStyleOtros = new M.style.Cluster(clusterOptionsOtros, vendorParameters);
 
-let compositeOtros = categoriaOtros.add(clusterStyleOtros);
+const compositeOtros = categoriaOtros.add(clusterStyleOtros);
 
 otros.setStyle(compositeOtros);
 
-let salud = new M.layer.WFS({
-  name: "Salud",
-
+const salud = new M.layer.WFS({
+  name: "salud",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Salud",
@@ -1364,7 +1390,7 @@ let salud = new M.layer.WFS({
   }
 });
 
-let estiloSalud = new M.style.Point({
+const estiloSalud = new M.style.Point({
   radius: 4,
   fill: {
     color: '#0b5404',
@@ -1377,29 +1403,29 @@ let estiloSalud = new M.style.Point({
 
 //Asignación de Iconos
 
-let saludCentrosAntencionPrimaria = new M.style.Point({
+const saludCentrosAntencionPrimaria = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Salud/centros_primaria.png'
   }
 });
 
-let saludCentrosPerifericosEspecialidades = new M.style.Point({
+const saludCentrosPerifericosEspecialidades = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Salud/centros_especialidad.png'
   }
 });
-let saludDistritosSanitarios = new M.style.Point({
+const saludDistritosSanitarios = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Salud/distritos.png'
   }
 });
 
-let saludHospitales = new M.style.Point({
+const saludHospitales = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Salud/hospital.png'
   }
 });
-let saludPrevencionRiesgos = new M.style.Point({
+const saludPrevencionRiesgos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Salud/prevencion.png'
   }
@@ -1407,7 +1433,7 @@ let saludPrevencionRiesgos = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaSalud = new M.style.Category("Nivel2", {
+const categoriaSalud = new M.style.Category("Nivel2", {
   "Centros de atención primaria": saludCentrosAntencionPrimaria,
   "Centros periféricos de especialidades": saludCentrosPerifericosEspecialidades,
   "Distritos sanitarios": saludDistritosSanitarios,
@@ -1415,7 +1441,7 @@ let categoriaSalud = new M.style.Category("Nivel2", {
   "Seguridad y salud": saludPrevencionRiesgos
 });
 
-let clusterOptionsSalud = {
+const clusterOptionsSalud = {
   ranges: [{
     min: 2,
     max: 200,
@@ -1443,15 +1469,14 @@ let clusterOptionsSalud = {
   }
 };
 
-let clusterStyleSalud = new M.style.Cluster(clusterOptionsSalud, vendorParameters);
+const clusterStyleSalud = new M.style.Cluster(clusterOptionsSalud, vendorParameters);
 
-let compositeSalud = categoriaSalud.add(clusterStyleSalud);
+const compositeSalud = categoriaSalud.add(clusterStyleSalud);
 
 salud.setStyle(compositeSalud);
 
-let social = new M.layer.WFS({
-  name: "Servicios_Sociales",
-
+const social = new M.layer.WFS({
+  name: "servicios_sociales",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Servicios sociales",
@@ -1467,48 +1492,48 @@ let social = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let servSocialDiscapacidad = new M.style.Point({
+const servSocialDiscapacidad = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/discapacidad.png'
   }
 });
 
-let servSocialAdicciones = new M.style.Point({
+const servSocialAdicciones = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/drogodependencia.png'
   }
 });
 
-let servSocialPoblacion = new M.style.Point({
+const servSocialPoblacion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/poblacion.png'
   }
 });
 
-let servSocialMayores = new M.style.Point({
+const servSocialMayores = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/mayores.png'
   }
 });
 
-let servSocialExclusion = new M.style.Point({
+const servSocialExclusion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/exclusion.png'
   }
 });
 
-let servSocialSaludMental = new M.style.Point({
+const servSocialSaludMental = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/saludmental.png'
   }
 });
 
-let servSocialMujeres = new M.style.Point({
+const servSocialMujeres = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/mujeres.png'
   }
 });
-let servSocialEtniaGitana = new M.style.Point({
+const servSociaconstniaGitana = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/ServicioSocial/etniagitana.png'
   }
@@ -1516,7 +1541,7 @@ let servSocialEtniaGitana = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaSocial = new M.style.Category("Nivel2", {
+const categoriaSocial = new M.style.Category("Nivel2", {
   "Personas con discapacidad": servSocialDiscapacidad,
   "Personas con adicciones": servSocialAdicciones,
   "Población general": servSocialPoblacion,
@@ -1524,11 +1549,11 @@ let categoriaSocial = new M.style.Category("Nivel2", {
   "Personas en situación o riesgo de exclusión social": servSocialExclusion,
   "Personas con enfermedad mental": servSocialSaludMental,
   "Mujeres": servSocialMujeres,
-  "Personas De Etnia Gitana": servSocialEtniaGitana
+  "Personas De Etnia Gitana": servSociaconstniaGitana
 });
 
 
-let clusterOptionsSocial = {
+const clusterOptionsSocial = {
   ranges: [{
     min: 2,
     max: 999,
@@ -1556,18 +1581,17 @@ let clusterOptionsSocial = {
   }
 };
 
-let clusterStyleSocial = new M.style.Cluster(clusterOptionsSocial, vendorParameters);
+const clusterStyleSocial = new M.style.Cluster(clusterOptionsSocial, vendorParameters);
 
-let compositeSocial = categoriaSocial.add(clusterStyleSocial);
+const compositeSocial = categoriaSocial.add(clusterStyleSocial);
 
 social.setStyle(compositeSocial);
 
 
 // ISE Transporte
 
-let transporte = new M.layer.WFS({
-  name: "Trafico_Transporte",
-
+const transporte = new M.layer.WFS({
+  name: "trafico_transporte",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Tráfico y transporte",
@@ -1584,13 +1608,13 @@ let transporte = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let transporteConservacionExplotacionCarreteras = new M.style.Point({
+const transporteConservacionExplotacionCarreteras = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Transporte/conservacion.png'
   }
 });
 
-let transportePuertoRedLogisticaAeropuertos = new M.style.Point({
+const transportePuertoRedLogisticaAeropuertos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Transporte/puertos.png'
   }
@@ -1598,13 +1622,13 @@ let transportePuertoRedLogisticaAeropuertos = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaTransporte = new M.style.Category("Nivel2", {
+const categoriaTransporte = new M.style.Category("Nivel2", {
   "Conservación y explotación de carreteras": transporteConservacionExplotacionCarreteras,
   "Puertos, red logística y aeropuertos": transportePuertoRedLogisticaAeropuertos
 });
 
 
-let clusterOptionsTransporte = {
+const clusterOptionsTransporte = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1632,15 +1656,14 @@ let clusterOptionsTransporte = {
   }
 };
 
-let clusterStyleTransporte = new M.style.Cluster(clusterOptionsTransporte, vendorParameters);
+const clusterStyconstransporte = new M.style.Cluster(clusterOptionsTransporte, vendorParameters);
 
-let compositeTransporte = categoriaTransporte.add(clusterStyleTransporte);
+const compositeTransporte = categoriaTransporte.add(clusterStyconstransporte);
 
 transporte.setStyle(compositeTransporte);
 
-let turismo = new M.layer.WFS({
-  name: "Turismo_Ocio",
-
+const turismo = new M.layer.WFS({
+  name: "turismo_ocio",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
   legend: "Turismo y ocio",
@@ -1657,24 +1680,24 @@ let turismo = new M.layer.WFS({
 
 //Asignación de Iconos
 
-let turismoActividadesRecreativasAlojamientos = new M.style.Point({
+const turismoActividadesRecreativasAlojamientos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Turismo/actividades.png'
   }
 });
 
-let turismoEducacionPromocion = new M.style.Point({
+const turismoEducacionPromocion = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Turismo/educacion1.png'
   }
 });
-let turismoResidencias = new M.style.Point({
+const turismoResidencias = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Turismo/residencias.png'
   }
 });
 
-let turismoMenores = new M.style.Point({
+const turismoMenores = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Equipamientos/Turismo/albergue.png'
   }
@@ -1682,14 +1705,14 @@ let turismoMenores = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaTurismo = new M.style.Category("Nivel2", {
+const categoriaTurismo = new M.style.Category("Nivel2", {
   "Actividades recreativas y alojamientos": turismoActividadesRecreativasAlojamientos,
   "Educación y promoción": turismoEducacionPromocion,
   "Residencias de tiempo libre": turismoResidencias,
   "Menores y juventud": turismoMenores
 });
 
-let clusterOptionsTurismo = {
+const clusterOptionsTurismo = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1717,19 +1740,18 @@ let clusterOptionsTurismo = {
   }
 };
 
-let clusterStyleTurismo = new M.style.Cluster(clusterOptionsTurismo, vendorParameters);
+const clusterStyconsturismo = new M.style.Cluster(clusterOptionsTurismo, vendorParameters);
 
-let compositeTurismo = categoriaTurismo.add(clusterStyleTurismo);
+const compositeTurismo = categoriaTurismo.add(clusterStyconsturismo);
 
 turismo.setStyle(compositeTurismo);
 
 //registros
 
-let registros = new M.layer.WFS({
-  name: "Registros",
+const registros = new M.layer.WFS({
+  name: "registros",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Registros",
   geometry: 'MPOINT',
   extract: true
 }, {
@@ -1740,13 +1762,13 @@ let registros = new M.layer.WFS({
   }
 });
 
-let estiloRegistros = new M.style.Point({
+const estiloRegistros = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo8.svg'
   }
 });
 
-let clusterOptionsRegistros = {
+const clusterOptionsRegistros = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1774,76 +1796,19 @@ let clusterOptionsRegistros = {
   }
 };
 
-let clusterStyleRegistros = new M.style.Cluster(clusterOptionsRegistros, vendorParameters);
+const clusterStyleRegistros = new M.style.Cluster(clusterOptionsRegistros, vendorParameters);
 
 registros.setStyle(estiloRegistros);
 registros.setStyle(clusterStyleRegistros);
 
 
-//buzones
 
-let buzones = new M.layer.WFS({
-  name: "Buzones",
-  url: "https://www.ideandalucia.es/services/ise/wfs?",
-  namespace: "ise",
-  name: "Buzones",
-  geometry: 'MPOINT',
-  extract: true
-}, {
-  vendor: {
-    getFeature: {
-      'propertyName': 'Nombre,Horario,Direccion,Foto,geom'
-    }
-  }
-});
-
-let estiloBuzones = new M.style.Point({
-  icon: {
-    //src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/logo_Buzon.png'
-    //src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes2/postal.png'
-    src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo6.svg'
-  }
-});
-
-let clusterOptionsBuzones = {
-  ranges: [{
-    min: 2,
-    max: 100,
-    style: new M.style.Point({
-      fill: {
-        color: '#699923',
-        opacity: 1
-      },
-      stroke: {
-        color: '#224d19'
-      },
-      radius: 12
-    })
-  }
-  ],
-  animated: true,
-  hoverInteraction: false,
-  displayAmount: true,
-  selectedInteraction: true,
-  maxFeaturesToSelect: 2,
-  distance: 100,
-  label: {
-    font: 'bold 12px Comic Sans MS',
-    color: '#FFFFFF'
-  }
-};
-
-let clusterStyleBuzones = new M.style.Cluster(clusterOptionsBuzones, vendorParameters);
-
-buzones.setStyle(estiloBuzones);
-buzones.setStyle(clusterStyleBuzones);
 
 // delegaciones 
-let delegaciones = new M.layer.WFS({
-  name: "Delegaciones",
+const delegaciones = new M.layer.WFS({
+  name: "delegaciones",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Delegaciones",
   geometry: 'MPOINT',
   extract: true
 }, {
@@ -1854,13 +1819,13 @@ let delegaciones = new M.layer.WFS({
   }
 });
 
-let estiloDelegaciones = new M.style.Point({
+const estiloDelegaciones = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo4.svg'
   }
 });
 
-let clusterOptionsDelegaciones = {
+const clusterOptionsDelegaciones = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1888,18 +1853,17 @@ let clusterOptionsDelegaciones = {
   }
 };
 
-let clusterStyleDelegaciones = new M.style.Cluster(clusterOptionsDelegaciones, vendorParameters);
+const clusterStyleDelegaciones = new M.style.Cluster(clusterOptionsDelegaciones, vendorParameters);
 
 delegaciones.setStyle(estiloDelegaciones);
 delegaciones.setStyle(clusterStyleDelegaciones);
 
 
 //ArchivosCentrales 
-let archivos = new M.layer.WFS({
-  name: "ArchivosCentrales",
+const archivos = new M.layer.WFS({
+  name: "archivos_centrales",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Archivos_Centrales",
   geometry: 'MPOINT',
   extract: true
 }, {
@@ -1910,13 +1874,13 @@ let archivos = new M.layer.WFS({
   }
 });
 
-let estiloArchivos = new M.style.Point({
+const estiloArchivos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo7.svg'
   }
 });
 
-let clusterOptionsArchivos = {
+const clusterOptionsArchivos = {
   ranges: [{
     min: 2,
     max: 100,
@@ -1944,17 +1908,16 @@ let clusterOptionsArchivos = {
   }
 };
 
-let clusterStyleArchivos = new M.style.Cluster(clusterOptionsArchivos, vendorParameters);
+const clusterStyleArchivos = new M.style.Cluster(clusterOptionsArchivos, vendorParameters);
 
 archivos.setStyle(estiloArchivos);
 archivos.setStyle(clusterStyleArchivos);
 
 //Organizacion Institucional
-let organizacionInstitucional = new M.layer.WFS({
-  name: "OrganizacionInstitucional",
+const organizacionInstitucional = new M.layer.WFS({
+  name: "organizaciones_institucionales",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Organizacion_institucional",
   geometry: 'MPOINT',
   extract: true
 }, {
@@ -1969,42 +1932,42 @@ let organizacionInstitucional = new M.layer.WFS({
 
 //AsignaciÃ³n de Iconos
 
-let camaraCuentas = new M.style.Point({
+const camaraCuentas = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo9.svg'
   }
 });
 
-let consejoAudioVisual = new M.style.Point({
+const consejoAudioVisual = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo10.svg'
   }
 });
-let consejoConsultivo = new M.style.Point({
+const consejoConsultivo = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo13.svg'
   }
 });
 
-let consejoTransparecia = new M.style.Point({
+const consejoTransparecia = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo14.svg'
   }
 });
 
-let consejoEconomico = new M.style.Point({
+const consejoEconomico = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo11.svg'
   }
 });
 
-let defensorPueblo = new M.style.Point({
+const defensorPueblo = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo12.svg'
   }
 });
 
-let parlamentoAndalucia = new M.style.Point({
+const parlamentoAndalucia = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo5.svg'
   }
@@ -2012,7 +1975,7 @@ let parlamentoAndalucia = new M.style.Point({
 
 //Simbología categorizada
 
-let categoriaOrganizacionInstitucional = new M.style.Category("Nombre", {
+const categoriaOrganizacionInstitucional = new M.style.Category("Nombre", {
   "Cámara de Cuentas de Andalucía": camaraCuentas,
   "Consejo Audiovisual de Andalucía": consejoAudioVisual,
   "Consejo Consultivo de Andalucía": consejoConsultivo,
@@ -2024,7 +1987,7 @@ let categoriaOrganizacionInstitucional = new M.style.Category("Nombre", {
 
 
 
-let clusterOptionsOrganizacionInstitucional = {
+const clusterOptionsOrganizacionInstitucional = {
   ranges: [{
     min: 2,
     max: 100,
@@ -2052,36 +2015,35 @@ let clusterOptionsOrganizacionInstitucional = {
   }
 };
 
-let clusterStyleOrganizacionInstitucional = new M.style.Cluster(clusterOptionsOrganizacionInstitucional, vendorParameters);
+const clusterStyleOrganizacionInstitucional = new M.style.Cluster(clusterOptionsOrganizacionInstitucional, vendorParameters);
 
-let compositeOrganizacionInstitucional = categoriaOrganizacionInstitucional.add(clusterStyleOrganizacionInstitucional);
+const compositeOrganizacionInstitucional = categoriaOrganizacionInstitucional.add(clusterStyleOrganizacionInstitucional);
 
 organizacionInstitucional.setStyle(compositeOrganizacionInstitucional);
 
 //consejerías
-let consejerias = new M.layer.WFS({
-  name: "Consejerias",
+const consejerias = new M.layer.WFS({
+  name: "consejerias",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Consejerias",
   geometry: 'MPOINT',
   extract: true
 }, {
   vendor: {
     getFeature: {
-      'propertyName': 'Nombre,Sede,Direccion,Telefono,Fax,Correo_electronico,web,Foto,geom'
+      'propertyName': 'Nombre,Sede,Direccion,Telefono,Fax,Correo_electronico,web,Foto,Procedimientos_Servicios,Temas,geom'
     }
   }
 });
 
-let estiloConsejerias = new M.style.Point({
+const estiloConsejerias = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo1.svg'
   }
 });
 
 
-let clusterOptionsConsejerias = {
+const clusterOptionsConsejerias = {
   ranges: [{
     min: 2,
     max: 100,
@@ -2109,7 +2071,7 @@ let clusterOptionsConsejerias = {
   }
 };
 
-let clusterStyleConsejerias = new M.style.Cluster(clusterOptionsConsejerias, vendorParameters);
+const clusterStyleConsejerias = new M.style.Cluster(clusterOptionsConsejerias, vendorParameters);
 
 consejerias.setStyle(estiloConsejerias);
 consejerias.setStyle(clusterStyleConsejerias);
@@ -2117,11 +2079,10 @@ consejerias.setStyle(clusterStyleConsejerias);
 
 //organismos
 
-let organismos = new M.layer.WFS({
-  name: "Organismos",
+const organismos = new M.layer.WFS({
+  name: "organismos",
   url: "https://www.ideandalucia.es/services/ise/wfs?",
   namespace: "ise",
-  name: "Organismos",
   geometry: 'MPOINT',
   extract: true
 }, {
@@ -2132,13 +2093,13 @@ let organismos = new M.layer.WFS({
   }
 });
 
-let estiloOrganismos = new M.style.Point({
+const estiloOrganismos = new M.style.Point({
   icon: {
     src: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/mapa_equipamientos/geolocalizacion/iconos/Sedes/svg/logo2.svg'
   }
 });
 
-let clusterOptionsOrganismos = {
+const clusterOptionsOrganismos = {
   ranges: [{
     min: 2,
     max: 500,
@@ -2166,7 +2127,7 @@ let clusterOptionsOrganismos = {
   }
 };
 
-let clusterStyleOrganismos = new M.style.Cluster(clusterOptionsOrganismos, vendorParameters);
+const clusterStyleOrganismos = new M.style.Cluster(clusterOptionsOrganismos, vendorParameters);
 
 organismos.setStyle(estiloOrganismos);
 organismos.setStyle(clusterStyleOrganismos);
@@ -2180,6 +2141,9 @@ organismos.setStyle(clusterStyleOrganismos);
 const configOrtofotografias1 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  //logo: 'https://viniloslowcost.es/2436/vinilo-escudo-betis.jpg',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: true,
   data: [
     {
@@ -2289,6 +2253,8 @@ const configOrtofotografias1 = {
 const configISEEquipamientos1 = {
   title: 'Inventario de Sedes y Eqipamientos',
   label: 'ISE',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: true,
   data: [
     {
@@ -2298,7 +2264,6 @@ const configISEEquipamientos1 = {
           group: 'Sedes',
           layers: [
             registros,
-            buzones,
             delegaciones,
             archivos,
             organizacionInstitucional,
@@ -2339,6 +2304,8 @@ const configISEEquipamientos1 = {
 const configOrtofotografias2 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data: [
     {
@@ -2403,13 +2370,14 @@ const configOrtofotografias2 = {
 const configISEEquipamientos2 = {
   title: 'Inventario de Sedes y Equipamientos de Andalucía',
   label: 'ISE',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data: [
     {
       name: 'Sedes',
       layers: [
         registros,
-        buzones,
         delegaciones,
         archivos,
         organizacionInstitucional,
@@ -2443,6 +2411,8 @@ const configISEEquipamientos2 = {
 const configOrtofotografias3 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: true,
   data:
   {
@@ -2510,6 +2480,8 @@ const configOrtofotografias3 = {
 const configISEEquipamientos3 = {
   title: 'Inventario de Sedes y Equipamientos de Andalucía',
   label: 'ISE',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: true,
   data:
   {
@@ -2519,7 +2491,6 @@ const configISEEquipamientos3 = {
         group: 'Sedes',
         layers: [
           registros,
-          buzones,
           delegaciones,
           archivos,
           organizacionInstitucional,
@@ -2554,6 +2525,8 @@ const configISEEquipamientos3 = {
 const configOrtofotografias4 = {
   title: 'Ortofotografías de Andalucia',
   label: 'Año',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data:
   {
@@ -2577,17 +2550,19 @@ const configOrtofotografias4 = {
 const configDirectorioEmpresas = {
   title: 'Geolocalización de Establecimientos de 50 o más Asalariados. Directorio de Empresas y Establecimientos',
   label: 'Directorio de Empresas',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data: {
     name: 'Directorio de Empresas',
     layers: [
-      direst_comercio_2018,
-      direst_construccion_2018,
-      direst_energia_2018,
-      direst_hosteleria_2018,
-      direst_industria_2018,
-      direst_servicios_2018,
-      direst_transporte_2018
+      direst_comercio_2020,
+      direst_construccion_2020,
+      direst_energia_2020,
+      direst_hosteleria_2020,
+      direst_industria_2020,
+      direst_servicios_2020,
+      direst_transporte_2020
     ]
   }
 }
@@ -2595,6 +2570,8 @@ const configDirectorioEmpresas = {
 const configTipologiasConstrucctivas = {
   title: 'Tipologías constructivas de catastro en malla estadística',
   label: 'Tipologías constructivas de catastro en malla estadística',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data: {
     name: 'Tipologias Construcctivas',
@@ -2623,6 +2600,8 @@ const configTipologiasConstrucctivas = {
 const configISEEquipamientos4 = {
   title: 'Invetario de Equipamientos',
   label: 'Año',
+  logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
+  logo_alt: 'Andalucía se mueve con Europa',
   group: false,
   data:
   {
@@ -2654,13 +2633,13 @@ const configISEEquipamientos4 = {
 
 /* Select Anidado con Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias1);
-const mp = new Inputselectaddlayer(configISEEquipamientos1);
+//const mp = new Inputselectaddlayer(configISEEquipamientos1);
 /* Select Anidado y sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias2);
 //const mp = new Inputselectaddlayer(configISEEquipamientos2);
 /* Select no Anidado con Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias3);
-//const mp = new Inputselectaddlayer(configISEEquipamientos3);
+const mp = new Inputselectaddlayer(configISEEquipamientos3);
 /* Select no Anidado sin Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias4);
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
