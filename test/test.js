@@ -2140,7 +2140,7 @@ organismos.setStyle(clusterStyleOrganismos);
 
 /* Select Anidado con Option Group**/
 const configOrtofotografias1 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
   //logo: 'https://viniloslowcost.es/2436/vinilo-escudo-betis.jpg',
@@ -2252,7 +2252,9 @@ const configOrtofotografias1 = {
 }
 
 const configISEEquipamientos1 = {
-  title: 'Inventario de Sedes y Eqipamientos',
+  image:"https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png",
+  image_alt:"Andalucía se mueve con Europa",
+  title: 'Inventario de Sedes y Equipamientos',
   label: 'ISE',
   logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
   logo_alt: 'Andalucía se mueve con Europa',
@@ -2275,7 +2277,7 @@ const configISEEquipamientos1 = {
       ]
     },
     {
-      name: 'Equipammientos',
+      name: 'Equipamientos',
       layerGroups: [
         {
           group: 'Centros y equipamientos',
@@ -2303,7 +2305,7 @@ const configISEEquipamientos1 = {
 }
 /* Select Anidado y sin Option Group**/
 const configOrtofotografias2 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
   logo_alt: 'Andalucía se mueve con Europa',
@@ -2410,7 +2412,7 @@ const configISEEquipamientos2 = {
 }
 /* Select no Anidado con Option Group**/
 const configOrtofotografias3 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
   label: 'Año',
   logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
   logo_alt: 'Andalucía se mueve con Europa',
@@ -2524,7 +2526,9 @@ const configISEEquipamientos3 = {
 }
 /* Select no Anidado sin Option Group**/
 const configOrtofotografias4 = {
-  title: 'Ortofotografías de Andalucia',
+  title: 'Ortofotografías de Andalucía',
+  image:"https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png",
+  image_alt:"Andalucía se mueve con Europa",  
   label: 'Año',
   logo: 'https://www.juntadeandalucia.es/institutodeestadisticaycartografia/portal/images/images/andaluciasemueveconeuropa.png',
   logo_alt: 'Andalucía se mueve con Europa',
@@ -2645,8 +2649,11 @@ const configISEEquipamientos4 = {
 const mp = new Inputselectaddlayer(configOrtofotografias4);
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
 //const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
-//const mp = new Inputselectaddlayer(configISEEquipamientos4);
+// const mp = new Inputselectaddlayer(configISEEquipamientos4);
 
+const simpleLegend = new M.plugin.Simplelegend()
+
+map.addPlugin(simpleLegend)
 
 map.addPlugin(mp);
 
@@ -2657,7 +2664,6 @@ mp.on(M.evt.ADDED_TO_MAP, () => {
 
 mp.on(M.evt.LOAD, () => {
   console.log('se cargo una capa');
-  console.log(mp.getLayer().name)
 })
 
 

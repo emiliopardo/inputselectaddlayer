@@ -670,6 +670,9 @@ mp.on(M.evt.LOAD, () => {
 })
 ```
 
+## Visor Demo
+Para comprobar el funcionamiento de este plugin se puede acceder al siguiente enlace [Ejemplo Visor](https://emiliopardo.github.io/inputselectaddlayer/).
+
 ## Video Demo
 
 Para comprobar el funcionamiento de este plugin se puede descargar el [Video](https://github.com/emiliopardo/inputselectaddlayer/blob/master/docs/video/inputselectaddlayer.webm?raw=true) el cual contempla la configuración y carga del plugin.

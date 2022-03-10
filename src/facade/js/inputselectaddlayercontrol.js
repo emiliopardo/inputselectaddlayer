@@ -27,6 +27,8 @@ export default class InputselectaddlayerControl extends M.Control {
     const impl = new InputselectaddlayerImplControl();
     super(impl, 'Inputselectaddlayer');
     this.layer = null;
+    this.image = null;
+    this.image_alt=null;
     this.config = config;
     this.checkConfig(this.config);
     this.title = config.title;
@@ -119,7 +121,6 @@ export default class InputselectaddlayerControl extends M.Control {
     if (config.hasOwnProperty('logo_alt')) {
       this.logo_alt = config.logo_alt
     }
-
     this.layerList = new Array();
     this.groupList = new Array();
     this.data = config.data;
@@ -130,6 +131,7 @@ export default class InputselectaddlayerControl extends M.Control {
         this.groupList.push(config.data[index].name)
       }
       this.templateVars = { vars: { title: this.title, groups: this.groupList, logo: this.logo, logo_alt: this.logo_alt } };
+
       this.template = templateSelectAnidated;
     } else if (Array.isArray(this.data) & config.group == false) {
       // console.log('es anidado sin optionGroup')
@@ -137,17 +139,20 @@ export default class InputselectaddlayerControl extends M.Control {
         this.groupList.push(config.data[index].name)
       }
       this.templateVars = { vars: { title: this.title, groups: this.groupList, logo: this.logo, logo_alt: this.logo_alt } };
+
       this.template = templateSelectAnidated;
     } else if (config.group) {
       // console.log('no anidado con optionGroup')
       this.getLayersFromGroupsLayers(this.data.layerGroups);
       this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups, logo: this.logo, logo_alt: this.logo_alt } };
+
       this.template = templateSelectOptionGroups;
     } else {
       // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
 
       this.templateVars = { vars: { title: this.title, layers: this.data.layers, logo: this.logo, logo_alt: this.logo_alt } };
+
       this.template = templateSelect;
     }
 
@@ -272,6 +277,12 @@ export default class InputselectaddlayerControl extends M.Control {
     if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
       this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
     }
+    
+    if (this.map_.getControls({ 'name': 'Simplelegend' }).length > 0) {
+      let legend = this.map_.getControls({ 'name': 'Simplelegend' })[0];
+      legend.updateLegend(this.layer)
+    }
+
 
     this.layer.on(M.evt.LOAD, () => {
       this.fire(M.evt.LOAD)

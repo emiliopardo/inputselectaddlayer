@@ -19,7 +19,8 @@ div.m-areas
   background-color: transparent !important;
   box-shadow: none !important;
   position:absolute !important;
-  margin-right:30vw;
+  margin-right:25vw !important;
+  /* margin-left:40 !important; */
   margin-top: 10px;
 }
 
@@ -41,13 +42,21 @@ div.m-areas
 #m-inputselectaddlayer-content.logo{
   float:left;
   width: calc(100% - 85px);
+.m-inputselectaddlayer-content-image{
+  display: inline;
+  vertical-align: -10px !important
+}
+
+#m-inputselectaddlayer-content{
+  border-radius: 10px;
+  background-color: #f4f4f4 !important;
 }
 
 .m-areas > div.m-area > div.m-panel.m-selector-panel.opened{
   margin-right: 35vw !important;
 }
 .m-areas > div.m-area > div.m-panel.m-selector-panel.opened > div.m-panel-controls {
-	width: 35vw !important;
+	width: 50vw !important;
   border-radius: 10px !important;
 }
 
@@ -63,6 +72,7 @@ div.m-areas
   background-color: #ffffff ;
   font-weight: bold;
   font-family: Muli, "sans-serif";
+  margin: 5px !important;
 }
 
 .m-inputselectaddlayer-content-body {
@@ -119,5 +129,8 @@ img#img-logo{
 #logo-container {
   float: left;
   width: 85px;
+}
 
+.select-layer{
+    width: 22vw!important;
 }
