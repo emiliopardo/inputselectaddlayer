@@ -1,19 +1,28 @@
 <div id="inputselectaddlayer" class="m-control m-container m-inputselectaddlayer">
-  {{#if title}}
-  <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
-    <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
-      {{title}}
+  {{#if logo}}
+  <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content logo">
+    {{else}}
+    <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
+      {{/if}}
+      {{#if title}}
+      <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
+        {{title}}
+      </div>
+      {{/if}}
+      <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
+        <select id="layerSelector" class="m-inputselectaddlayer-select simple-select" name="select">
+          <option value=""> --- Selecciona una capa --- </option>
+          {{#each layers}}
+
+          <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
+          {{/each}}
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    {{#if logo}}
+    <div id="logo-container">
+      <img id="img-logo" src="{{logo}}" alt="{{logo_alt}}" title="{{logo_alt}}">
     </div>
     {{/if}}
-    <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
-      <select id="layerSelector" class="m-inputselectaddlayer-select" name="select">
-        <option value=""> --- Selecciona una capa --- </option>
-        {{#each layers}}
-
-        <option value="{{this.name}}*{{this.options.styles}}">{{this.legend}}</option>
-        {{/each}}
-        </optgroup>
-      </select>
-    </div>
   </div>
-</div>
