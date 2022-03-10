@@ -111,6 +111,15 @@ export default class InputselectaddlayerControl extends M.Control {
     if (config.hasOwnProperty('title')) {
       this.title = config.title
     }
+
+    if (config.hasOwnProperty('logo')) {
+      this.logo = config.logo
+    }
+
+    if (config.hasOwnProperty('logo_alt')) {
+      this.logo_alt = config.logo_alt
+    }
+
     this.layerList = new Array();
     this.groupList = new Array();
     this.data = config.data;
@@ -120,27 +129,29 @@ export default class InputselectaddlayerControl extends M.Control {
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
-      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.templateVars = { vars: { title: this.title, groups: this.groupList, logo: this.logo, logo_alt: this.logo_alt } };
       this.template = templateSelectAnidated;
     } else if (Array.isArray(this.data) & config.group == false) {
       // console.log('es anidado sin optionGroup')
       for (let index = 0; index < config.data.length; index++) {
         this.groupList.push(config.data[index].name)
       }
-      this.templateVars = { vars: { title: this.title, groups: this.groupList } };
+      this.templateVars = { vars: { title: this.title, groups: this.groupList, logo: this.logo, logo_alt: this.logo_alt } };
       this.template = templateSelectAnidated;
     } else if (config.group) {
       // console.log('no anidado con optionGroup')
       this.getLayersFromGroupsLayers(this.data.layerGroups);
-      this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups } };
+      this.templateVars = { vars: { title: this.title, groups: this.data.layerGroups, logo: this.logo, logo_alt: this.logo_alt } };
       this.template = templateSelectOptionGroups;
     } else {
       // console.log('no anidado sin optionGroup')
       this.layerList = this.data.layers;
 
-      this.templateVars = { vars: { title: this.title, layers: this.data.layers } };
+      this.templateVars = { vars: { title: this.title, layers: this.data.layers, logo: this.logo, logo_alt: this.logo_alt } };
       this.template = templateSelect;
     }
+
+    // console.log(this.templateVars)
 
   }
 
@@ -235,31 +246,35 @@ export default class InputselectaddlayerControl extends M.Control {
 
 
   LoadLayer(value) {
-      let name = value.split('*')[0]
-      let style = value.split('*')[1]
-      let find = false;
-      this.map_.removeLayers(this.layer);
-      do {
-        for (let i = 0; i < this.layerList.length; i++) {
-          if (this.layerList[i].name == name && this.layerList[i].options.styles==style) {
-            this.layer = this.layerList[i]
-            find = true;
-          }else if(this.layerList[i].name == name){
-            this.layer = this.layerList[i]
-            find = true;
-          }
+    let name = value.split('*')[0]
+    let style = value.split('*')[1]
+    let find = false;
+    this.map_.removeLayers(this.layer);
+    do {
+      for (let i = 0; i < this.layerList.length; i++) {
+        if (this.layerList[i].name == name && style == '') {
+          this.layer = this.layerList[i]
+          find = true;
+        } else if (this.layerList[i].name == name && style == "undefined") {
+          this.layer = this.layerList[i]
+          find = true;
         }
-      } while (!find);
-      this.map_.addLayers([this.layer]);
-      this.layer.setOpacity(0.9);
-      this.layer.displayInLayerSwitcher = true;
-
-      if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
-        this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
+        else if (this.layerList[i].name == name && this.layerList[i].options.styles == style) {
+          this.layer = this.layerList[i]
+          find = true;
+        }
       }
+    } while (!find);
+    this.map_.addLayers([this.layer]);
+    this.layer.setOpacity(0.9);
+    this.layer.displayInLayerSwitcher = true;
 
-      this.layer.on(M.evt.LOAD, () => {
-        this.fire(M.evt.LOAD)
-      })
+    if (this.map_.getControls({ 'name': 'layerswitcher' }).length > 0) {
+      this.map_.getControls({ 'name': 'layerswitcher' })[0].render();
+    }
+
+    this.layer.on(M.evt.LOAD, () => {
+      this.fire(M.evt.LOAD)
+    })
   }
 }
