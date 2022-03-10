@@ -42,6 +42,8 @@ div.m-areas
 #m-inputselectaddlayer-content.logo{
   float:left;
   width: calc(100% - 85px);
+}
+
 .m-inputselectaddlayer-content-image{
   display: inline;
   vertical-align: -10px !important
