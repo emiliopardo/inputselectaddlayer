@@ -3,6 +3,7 @@
 import Inputselectaddlayer from 'facade/inputselectaddlayer';
 
 const map = M.map({
+  controls: ['layerswitcher'],
   container: 'mapjs',
 });
 
@@ -2639,9 +2640,9 @@ const configISEEquipamientos4 = {
 //const mp = new Inputselectaddlayer(configISEEquipamientos2);
 /* Select no Anidado con Option Group**/
 //const mp = new Inputselectaddlayer(configOrtofotografias3);
-const mp = new Inputselectaddlayer(configISEEquipamientos3);
+//const mp = new Inputselectaddlayer(configISEEquipamientos3);
 /* Select no Anidado sin Option Group**/
-//const mp = new Inputselectaddlayer(configOrtofotografias4);
+const mp = new Inputselectaddlayer(configOrtofotografias4);
 //const mp = new Inputselectaddlayer(configDirectorioEmpresas);
 //const mp = new Inputselectaddlayer(configTipologiasConstrucctivas);
 //const mp = new Inputselectaddlayer(configISEEquipamientos4);
