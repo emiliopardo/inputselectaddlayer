@@ -1,27 +1,29 @@
 <div id="inputselectaddlayer" class="m-control m-container m-inputselectaddlayer">
-  {{#if title}}
-  <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
-    <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
-      {{title}}
-      {{#if image}}
-      <img class="m-inputselectaddlayer-content-image"
-      src="{{image}}"
-      alt="{{image_alt}}"
-      title="{{image_alt}}">
+  {{#if logo}}
+  <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content logo">
+    {{else}}
+    <div id="m-inputselectaddlayer-content" class="m-inputselectaddlayer-content">
       {{/if}}
+      {{#if title}}
+      <div id="m-inputselectaddlayer-content-title" class="m-inputselectaddlayer-content-title">
+        {{title}}
+      </div>
+      {{/if}}
+      <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
+        <select id='groupSelector' class="m-inputselectaddlayer-select select-group" name="select">
+          <option value=""> --- Selecciona un Grupo --- </option>
+          {{#each groups}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+        <select id='layerSelector' class="m-inputselectaddlayer-select select-layer" name="select">
+          <option value=""> --- Selecciona una capa --- </option>
+        </select>
+      </div>
+    </div>
+    {{#if logo}}
+    <div id="logo-container">
+      <img id="img-logo" src="{{logo}}" alt="{{logo_alt}}" title="{{logo_alt}}">
     </div>
     {{/if}}
-    <div id="m-inputselectaddlayer-content-body" class="m-inputselectaddlayer-content-body">
-      <select id='groupSelector' class="m-inputselectaddlayer-select select-group" name="select">
-        <option value=""> --- Selecciona un Grupo --- </option>
-        {{#each groups}}
-        <option value="{{this}}">{{this}}</option>
-        {{/each}}
-      </select>
-
-      <select id='layerSelector' class="m-inputselectaddlayer-select select-layer" name="select">
-        <option value=""> --- Selecciona una capa --- </option>
-      </select>
-    </div>
   </div>
-</div>

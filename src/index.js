@@ -1,6 +1,6 @@
-import M$plugin$Inputselectaddlayer from '/home/epardo/proyectos/inputselectaddlayer/src/facade/js/inputselectaddlayer';
-import M$control$InputselectaddlayerControl from '/home/epardo/proyectos/inputselectaddlayer/src/facade/js/inputselectaddlayercontrol';
-import M$impl$control$InputselectaddlayerControl from '/home/epardo/proyectos/inputselectaddlayer/src/impl/ol/js/inputselectaddlayercontrol';
+import M$plugin$Inputselectaddlayer from 'C:/proyectos/inputselectaddlayer/src/facade/js/inputselectaddlayer';
+import M$control$InputselectaddlayerControl from 'C:/proyectos/inputselectaddlayer/src/facade/js/inputselectaddlayercontrol';
+import M$impl$control$InputselectaddlayerControl from 'C:/proyectos/inputselectaddlayer/src/impl/ol/js/inputselectaddlayercontrol';
 
 if (!window.M.plugin) window.M.plugin = {};
 if (!window.M.control) window.M.control = {};
