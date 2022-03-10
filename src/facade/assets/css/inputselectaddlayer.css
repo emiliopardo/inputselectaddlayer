@@ -42,6 +42,10 @@ div.m-areas
   float:left;
   width: calc(100% - 85px);
 }
+
+.m-areas > div.m-area > div.m-panel.m-selector-panel.opened{
+  margin-right: 35vw !important;
+}
 .m-areas > div.m-area > div.m-panel.m-selector-panel.opened > div.m-panel-controls {
 	width: 35vw !important;
   border-radius: 10px !important;
