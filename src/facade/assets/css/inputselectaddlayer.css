@@ -51,12 +51,9 @@ div.m-areas
 
 #m-inputselectaddlayer-content{
   border-radius: 10px;
-  background-color: #f4f4f4 !important;
+  background-color: #ffffff !important;
 }
 
-.m-areas > div.m-area > div.m-panel.m-selector-panel.opened{
-  margin-right: 35vw !important;
-}
 .m-areas > div.m-area > div.m-panel.m-selector-panel.opened > div.m-panel-controls {
 	width: 50vw !important;
   border-radius: 10px !important;
